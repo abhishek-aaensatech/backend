@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 let converter = require('json-2-csv');
 const fs = require('fs');
 const path = require("path");
-const { log } = require("console");
 
 DbConnect();
 
@@ -66,15 +65,17 @@ app.get('/csv', async (req, res) => {
     }
     const csv = await converter.json2csv(data);
     const myPath = path.join(__dirname, filename);
-    try{
+    try {
         fs.writeFileSync(myPath, csv);
-        res.status(200).download(myPath,()=>{
-            fs.unlinkSync(myPath)
+        res.status(200).download(myPath, () => {
+            setTimeout(() => {
+                fs.unlinkSync(myPath)
+            }, 5000)
         })
-    }catch(er){
+    } catch (er) {
         console.log(er);
     }
-}); 
+});
 
 app.post("/getLatestData", async (req, res) => {
     const { GatewayId, OptimizerId } = req.body;
@@ -84,6 +85,16 @@ app.post("/getLatestData", async (req, res) => {
     if (val.length === 0)
         return res.status(404).json({ message: "No Data Found for given GatewayID and OptimizerID" });
     return res.status(200).json(val[0]);
+})
+
+app.post("/getGraphData", async (req, res) => {
+    const { GatewayId, OptimizerId } = req.body;
+    if ((!GatewayId) || (!OptimizerId))
+        return res.status(400).json({ message: "Either GatewayID or OptimizerId not available" });
+    const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ "created_at": 1 });
+    if (val.length === 0)
+        return res.status(404).json({ message: "No Data Found for given GatewayID and OptimizerID" });
+    return res.status(200).json(val);
 })
 
 app.post("/gatewayIDall", async (req, res) => {
@@ -100,6 +111,20 @@ app.post('/sendNewDetails', async (req, res) => {
     const detail = req.body;
     if (!detail.GatewayId || !detail.OptimizerId)
         return res.status(404).json({ message: "Data is missing" });
+    const gateway = await GatewayModel.find({ GatewayId: detail.GatewayId });
+    if (gateway.length === 0) {
+        const details = {
+            GatewayId: detail.GatewayId,
+            OptimizerIds: [detail.OptimizerId]
+        };
+        await GatewayModel.create(details);
+    } else {
+        if (!(gateway[0].OptimizerIds.includes(detail.OptimizerId))) {
+            const newOptimizerIds = [...gateway[0].OptimizerIds, detail.OptimizerId]
+            await GatewayModel.updateOne({ GatewayId: detail.GatewayId }, { $set: { OptimizerIds: newOptimizerIds } });
+        }
+    }
+
     const val = await DetailsModel.create(detail);
     if (!val)
         return res.status(504).json({ message: "Internal Server Error and data has not saved" });
@@ -107,7 +132,6 @@ app.post('/sendNewDetails', async (req, res) => {
 })
 
 app.post("/addOptimizer", async (req, res) => {
-    console.log("request got");
     const { GatewayId, OptimizerId } = req.body;
     if ((!GatewayId) || (!OptimizerId))
         return res.status(400).json({ message: "Please provide a GatewayID and OptimezerID" });
@@ -122,7 +146,6 @@ app.post("/addOptimizer", async (req, res) => {
             return res.status(504).json({ message: "Internal Server Error and data has not saved" });
         return res.status(200).json(val);
     } else {
-        console.log(gateway[0].OptimizerIds);
         const newOptimizerIds = [...gateway[0].OptimizerIds, OptimizerId]
         const val = await GatewayModel.updateOne({ GatewayId }, { $set: { OptimizerIds: newOptimizerIds } });
         if (!val)
@@ -142,7 +165,6 @@ app.post('/getOptimizer', async (req, res) => {
 })
 
 app.get("/allGateways", async (req, res) => {
-    console.log("OK");
     const val = await GatewayModel.find();
     if (val.length === 0)
         return res.status(404).json({ message: "No data Found" });
@@ -152,4 +174,4 @@ app.get("/allGateways", async (req, res) => {
 
 app.listen(PORT, () => {
     console.log("Server started on PORT ", PORT);
-}) 
+})  
