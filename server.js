@@ -172,8 +172,8 @@ app.get("/allGateways", async (req, res) => {
 })
 
 app.post("/toggleOptimizer",(req,res)=>{
-    const {toggle} = req.body;
-    if(!toggle){
+    const {toggle,GatewayId,OptimizerId} = req.body;
+    if(toggle==='undefined' || !GatewayId || !OptimizerId){
         return res.send("Data bhej bhai");
     }
     res.json(req.body);
