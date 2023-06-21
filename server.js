@@ -171,6 +171,13 @@ app.get("/allGateways", async (req, res) => {
     return res.status(200).json(val);
 })
 
+app.post("/toggleOptimizer",(req,res)=>{
+    const {toggle} = req.body;
+    if(!toggle){
+        return res.send("Data bhej bhai");
+    }
+    res.json(req.body);
+})
 
 app.listen(PORT, () => {
     console.log("Server started on PORT ", PORT);
