@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 let converter = require('json-2-csv');
 const fs = require('fs');
 const path = require("path");
+const https = require('https');
 
 DbConnect();
 
@@ -17,7 +18,6 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
 
 app.get('/', (req, res) => {
     return res.send("Server started");
@@ -81,9 +81,10 @@ app.post("/getLatestData", async (req, res) => {
     const { GatewayId, OptimizerId } = req.body;
     if ((!GatewayId) || (!OptimizerId))
         return res.status(400).json({ message: "Either GatewayID or OptimizerId not available" });
-    const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ "created_at": -1 });
+    const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ createdAt: -1 }).limit(1);
     if (val.length === 0)
         return res.status(404).json({ message: "No Data Found for given GatewayID and OptimizerID" });
+    // console.log(val);
     return res.status(200).json(val[0]);
 })
 
@@ -91,9 +92,10 @@ app.post("/getGraphData", async (req, res) => {
     const { GatewayId, OptimizerId } = req.body;
     if ((!GatewayId) || (!OptimizerId))
         return res.status(400).json({ message: "Either GatewayID or OptimizerId not available" });
-    const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ "created_at": 1 });
+    const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ createdAt: 1 });
     if (val.length === 0)
         return res.status(404).json({ message: "No Data Found for given GatewayID and OptimizerID" });
+    // console.log(val);
     return res.status(200).json(val);
 })
 
@@ -178,7 +180,7 @@ app.post("/toggleOptimizer",(req,res)=>{
     }
     res.json(req.body);
 })
-
-app.listen(PORT, () => {
-    console.log("Server started on PORT ", PORT);
-})  
+  
+app.listen(5000,()=>{
+    console.log('server is running on port 5000');
+});
