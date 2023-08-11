@@ -24,10 +24,14 @@ app.get('/', (req, res) => {
 })
 
 app.get("/logs", async (req, res) => {
+    const queries = req.query;
+    if (Object.keys(queries).length === 0) {
+        return res.status(400).send("<p>Please Provide queries like <br><br> http://44.202.86.124:5000/logs?Date=2023-08-09</p>");
+    }
     try {
-        const allDetails = await DetailsModel.find({});
+        const allDetails = await DetailsModel.find(queries).sort({ createdAt: -1 });
         if (!allDetails || allDetails.length == 0)
-            return res.status(404).json({});
+            return res.status(404).send("No data is found for given Query");
         return res.status(200).json(allDetails);
     } catch (error) {
         return res.status(500).json({ message: "Internal Server Error" });
@@ -35,12 +39,15 @@ app.get("/logs", async (req, res) => {
 })
 
 app.get('/csv', async (req, res) => {
-    const allDetails = await DetailsModel.find({});
-    if (!allDetails || allDetails.length === 0) {
-        return res.status(404).json({});
+    const queries = req.query;
+    if (Object.keys(queries).length === 0) {
+        return res.status(400).send("<p>Please Provide queries like <br><br> http://44.202.86.124:5000/csv?Date=2023-08-09</p>");
     }
     try {
-
+        const allDetails = await DetailsModel.find(queries);
+        if (!allDetails || allDetails.length === 0) {
+            return res.status(404).send("We Don't Have Data");
+        }
         const date = new Date();
         const filename = `${date.toUTCString().slice(5, 11)}.csv`;
         const data = [];
@@ -48,8 +55,8 @@ app.get('/csv', async (req, res) => {
             data.push({
                 Date: val['Date'],
                 Time: val['Time'],
-                OptimizerId: val["OptimizerId"],
-                GatewayId: val['GatewayId'],
+                OptimizerID: val["OptimizerID"],
+                GatewayID: val['GatewayID'],
                 OptimizerMode: val['OptimizerMode'],
                 RoomTemperature: val['RoomTemperature'],
                 CoilTemperature: val['CoilTemperature'],
@@ -69,17 +76,20 @@ app.get('/csv', async (req, res) => {
                 Ph3PowerFactor: val['Ph3PowerFactor'],
             });
         }
+        // console.log("data",data);
         const csv = await converter.json2csv(data);
         const myPath = path.join(__dirname, filename);
         try {
-            fs.writeFileSync(myPath, csv);
-            res.status(200).download(myPath, () => {
+            fs.writeFileSync(myPath, csv, () => {
+                return res.status(200).json({ message: "Internal Server Error" });
+            });
+            return res.status(200).download(myPath, () => {
                 setTimeout(() => {
                     fs.unlinkSync(myPath)
                 }, 5000)
             })
         } catch (er) {
-            console.log(er);
+            throw er;
         }
     } catch (error) {
         return res.status(500).json({ message: "Internal Server Error" });
@@ -105,7 +115,7 @@ app.post("/getGraphData", async (req, res) => {
     if ((!GatewayId) || (!OptimizerId))
         return res.status(400).json({ message: "Either GatewayID or OptimizerId not available" });
     try {
-        const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ createdAt: 1 }).count();
+        const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ createdAt: 1 });
         if (val.length === 0)
             return res.status(404).json({ message: "No Data Found for given GatewayID and OptimizerID" });
         return res.status(200).json(val);
@@ -127,6 +137,36 @@ app.post("/gatewayIDall", async (req, res) => {
         return res.status(500).json({ message: "Internal Server Error" })
     }
 })
+
+
+async function saveData(detailsOfOne) {
+    try {
+        const detail = detailsOfOne;
+        // console.log(detail);
+        if (!detail.GatewayID || !detail.OptimizerID) {
+            console.log("not");
+            return;
+        }
+        const gateway = await GatewayModel.find({ GatewayID: detail.GatewayID });
+        if (gateway.length === 0) {
+            const details = {
+                GatewayID: detail.GatewayID,
+                OptimizerIds: [detail.OptimizerID]
+            };
+            await GatewayModel.create(details);
+        } else {
+            if (!(gateway[0].OptimizerIds.includes(detail.OptimizerID))) {
+                const newOptimizerIds = [...gateway[0].OptimizerIds, detail.OptimizerID]
+                await GatewayModel.updateOne({ GatewayID: detail.GatewayID }, { $set: { OptimizerIds: newOptimizerIds } });
+            }
+        }
+        await DetailsModel.create(detail);
+        console.log("saved");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 app.post('/sendNewDetails', async (req, res) => {
     const detail = req.body;
@@ -154,39 +194,19 @@ app.post('/sendNewDetails', async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: "Internal Server Error" })
     }
+
 })
 
-async function saveData(detailsOfOne) {
-    try {
-        const detail = detailsOfOne;
-        console.log(detail);
-        if (!detail.GatewayId || !detail.OptimizerId) {
-            return;
-        }
-        const gateway = await GatewayModel.find({ GatewayId: detail.GatewayId });
-        if (gateway.length === 0) {
-            const details = {
-                GatewayId: detail.GatewayId,
-                OptimizerIds: [detail.OptimizerId]
-            };
-            await GatewayModel.create(details);
-        } else {
-            if (!(gateway[0].OptimizerIds.includes(detail.OptimizerId))) {
-                const newOptimizerIds = [...gateway[0].OptimizerIds, detail.OptimizerId]
-                await GatewayModel.updateOne({ GatewayId: detail.GatewayId }, { $set: { OptimizerIds: newOptimizerIds } });
-            }
-        }
-        await DetailsModel.create(detail);
-    } catch (error) {
-        console.log(error);
-    }
-}
-
 app.post('/sendNewDetailsFromGateway', async (req, res) => {
-    let cnt = 0;
+    // console.log(req.body);
     try {
-        for (const detailsOfOne of req.body) {
-            saveData(detailsOfOne);
+        const { data, meterDetails } = req.body;
+        if (data.lenght === 0) {
+            saveData({ ...meterDetails });
+        } else {
+            for (const detailsOfOne of data) {
+                saveData({ ...detailsOfOne, ...meterDetails });
+            }
         }
     } catch (error) {
         return res.status(500).json({ message: "Internal Server Error" })

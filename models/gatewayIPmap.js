@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const gatewaySchema = new Schema(
+const gatewayIPmapSchema = new Schema(
   {
     GatewayID:{ type: String },
-    OptimizerIds:{ type : Array , "default" : []}
+    IP:{ type: String }    
   },
   {
     timestamps: true,
@@ -12,4 +12,4 @@ const gatewaySchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("GatewayIDs", gatewaySchema, "gatewayIDs");
+module.exports = mongoose.model("GatewayIPmap", gatewayIPmapSchema, "gatewayIPmap");

@@ -5,8 +5,8 @@ const detailsSchema = new Schema(
   {
     Date:{ type: String },
     Time:{ type: String },
-    OptimizerId:{ type: String },
-    GatewayId:{ type: String },
+    OptimizerID:{ type: String },
+    GatewayID:{ type: String },
     OptimizerMode:{ type: String },
     RoomTemperature:{ type: Number },
     CoilTemperature:{ type: Number },
