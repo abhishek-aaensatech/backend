@@ -413,17 +413,6 @@ void *optimizer_query_function(void *arg)
 /**************************************************THREAD-1 RELATED CODE END*********************************************************/
 
 /**************************************************THREAD-2 RELATED CODE START*********************************************************/
-
-void send_data_to_server_nodejs_using_system(char *data)
-{
-
-    char curlbuffer[7000];
-    sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://44.202.86.124:5000/sendNewDetailsFromGateway", data);
-    // sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://192.168.5.17:4000/data", data);
-    // sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://localhost:4000/data", data);
-    system(curlbuffer);
-}
-
 void save_data_to_local_file(char *data)
 {
     char *date = (char *)malloc(current_date_len);
@@ -440,6 +429,34 @@ void save_data_to_local_file(char *data)
     fwrite("\n", sizeof(data[0]), 1, file_fd);
     free(date);
     fclose(file_fd);
+}
+
+void SaveForSendAgain(char *data)
+{
+    FILE *file_fd = fopen("quaserdata/sendAgain.json", "a");
+    if (file_fd == NULL)
+    {
+        printf("File Opening Fail");
+        return;
+    }
+    size_t num_elements = strlen(data);
+    fwrite(data, sizeof(data[0]), num_elements, file_fd);
+    fwrite("\n\n\n\n\n", sizeof(data[0]), 5, file_fd);
+    fclose(file_fd);
+}
+
+void send_data_to_server_nodejs_using_system(char *data)
+{
+
+    char curlbuffer[7000];
+    sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://44.202.86.124:5000/sendNewDetailsFromGateway", data);
+    // sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://192.168.5.17:4000/data", data);
+    // sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://localhost:4000/data", data);
+    int status = system(curlbuffer);
+    if (status != 0)
+    {
+        SaveForSendAgain(data);
+    }
 }
 
 void *send_data_to_server_function(void *arg)
