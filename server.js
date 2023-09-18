@@ -4,11 +4,12 @@ require('dotenv').config();
 const DbConnect = require('./database.js');
 const DetailsModel = require("./models/details.js");
 const GatewayModel = require("./models/optimizer.js");
+const ToggleModel = require("./models/toggleModel.js");
 const bodyParser = require('body-parser');
 let converter = require('json-2-csv');
 const fs = require('fs');
+const axios = require("axios");
 const path = require("path");
-const https = require('https');
 
 DbConnect();
 
@@ -101,7 +102,7 @@ app.post("/getLatestData", async (req, res) => {
     if ((!GatewayId) || (!OptimizerId))
         return res.status(400).json({ message: "Either GatewayID or OptimizerId not available" });
     try {
-        const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ createdAt: -1 }).limit(1);
+        const val = await DetailsModel.find({ GatewayID: GatewayId, OptimizerID: OptimizerId }).sort({ createdAt: -1 }).limit(1);
         if (val.length === 0)
             return res.status(404).json({ message: "No Data Found for given GatewayID and OptimizerID" });
         return res.status(200).json(val[0]);
@@ -112,16 +113,20 @@ app.post("/getLatestData", async (req, res) => {
 
 app.post("/getGraphData", async (req, res) => {
     const { GatewayId, OptimizerId } = req.body;
+    console.log("OK1");
     if ((!GatewayId) || (!OptimizerId))
         return res.status(400).json({ message: "Either GatewayID or OptimizerId not available" });
     try {
-        const val = await DetailsModel.find({ GatewayId, OptimizerId }).sort({ createdAt: 1 });
+        console.log("OK2");
+        const val = await DetailsModel.find({ GatewayID: GatewayId, OptimizerID: OptimizerId }).sort({ createdAt: 1 }).limit(100);
         if (val.length === 0)
             return res.status(404).json({ message: "No Data Found for given GatewayID and OptimizerID" });
+        console.log("OK3");
         return res.status(200).json(val);
     } catch (error) {
         return res.status(500).json({ message: "Internal Server Error" })
     }
+    console.log("OK4");
 })
 
 app.post("/gatewayIDall", async (req, res) => {
@@ -129,7 +134,7 @@ app.post("/gatewayIDall", async (req, res) => {
     if (!GatewayId)
         return res.status(400).json({ message: "Either GatewayID not available" });
     try {
-        const val = await DetailsModel.find({ GatewayId });
+        const val = await DetailsModel.find({ GatewayID: GatewayId });
         if (val.length === 0)
             return res.status(404).json({ message: "No Data Found for given GatewayID" });
         return res.status(200).json(val);
@@ -142,29 +147,38 @@ app.post("/gatewayIDall", async (req, res) => {
 async function saveData(detailsOfOne) {
     try {
         const detail = detailsOfOne;
-        // console.log(detail);
-        if (!detail.GatewayID || !detail.OptimizerID) {
+        if (!detail.GatewayID) {
             console.log("not");
             return;
         }
         const gateway = await GatewayModel.find({ GatewayID: detail.GatewayID });
         if (gateway.length === 0) {
-            const details = {
-                GatewayID: detail.GatewayID,
-                OptimizerIds: [detail.OptimizerID]
-            };
-            await GatewayModel.create(details);
+            if (detail.OptimizerID) {
+                const details = {
+                    GatewayID: detail.GatewayID,
+                    OptimizerIds: [detail.OptimizerID]
+                };
+                await GatewayModel.create(details);
+            } else {
+                const details = {
+                    GatewayID: detail.GatewayID,
+                    OptimizerIds: []
+                };
+                await GatewayModel.create(details);
+            }
         } else {
-            if (!(gateway[0].OptimizerIds.includes(detail.OptimizerID))) {
+            if (detail.OptimizerID && (!(gateway[0].OptimizerIds.includes(detail.OptimizerID)))) {
                 const newOptimizerIds = [...gateway[0].OptimizerIds, detail.OptimizerID]
                 await GatewayModel.updateOne({ GatewayID: detail.GatewayID }, { $set: { OptimizerIds: newOptimizerIds } });
             }
         }
-        await DetailsModel.create(detail);
+        const res = await DetailsModel.create(detail);
         console.log("saved");
     } catch (error) {
         console.log(error);
+        throw error;
     }
+
 }
 
 
@@ -198,10 +212,10 @@ app.post('/sendNewDetails', async (req, res) => {
 })
 
 app.post('/sendNewDetailsFromGateway', async (req, res) => {
-    // console.log(req.body);
     try {
+        console.log(req.body);
         const { data, meterDetails } = req.body;
-        if (data.lenght === 0) {
+        if (data.length === 0) {
             saveData({ ...meterDetails });
         } else {
             for (const detailsOfOne of data) {
@@ -211,14 +225,15 @@ app.post('/sendNewDetailsFromGateway', async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: "Internal Server Error" })
     }
+
     return res.status(200).json({ message: "We Receive Data" });
 })
 
 app.post("/addOptimizer", async (req, res) => {
     const { GatewayId, OptimizerId } = req.body;
     if ((!GatewayId) || (!OptimizerId))
-        return res.status(400).json({ message: "Please provide a GatewayID and OptimezerID" });
-    const gateway = await GatewayModel.find({ GatewayId });
+        return res.status(400).json({ message: "Please provide a GatewayID and OptimizerID" });
+    const gateway = await GatewayModel.find({ GatewayID: GatewayId });
     if (gateway.length === 0) {
         const detail = {
             GatewayId,
@@ -242,8 +257,8 @@ app.post('/getOptimizer', async (req, res) => {
     if (!GatewayId)
         return res.status(400).json({ message: "Please provide a valid GatewayID" });
     try {
-        const gateway = await GatewayModel.find({ GatewayId });
-        if (gateway.lenght === 0)
+        const gateway = await GatewayModel.find({ GatewayID: GatewayId });
+        if (gateway.length === 0)
             return res.status(404).json({ message: "No Data Found for given GatewayID" });
         return res.status(200).json(gateway);
     } catch (error) {
@@ -251,9 +266,24 @@ app.post('/getOptimizer', async (req, res) => {
     }
 })
 
+app.post("/toggleOptimizer", async (req, res) => {
+    try {
+        const { GatewayID } = req.body;
+        const detail = await gatewayIPmap.find({ GatewayID });
+        const { IP } = detail[0];
+        if (!IP)
+            return res.json({ message: "GatewayID does not exist" });
+        const response = await axios.post(`http://${IP}:8080/toggleOptimizer`, req.body)
+        console.log(response);
+        return res.status(200).json({ message: "We received you request" });
+    } catch (error) {
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+})
+
 app.get("/allGateways", async (req, res) => {
     try {
-        const val = await GatewayModel.find();
+        const val = await GatewayModel.find({});
         if (val.length === 0)
             return res.status(404).json({ message: "No data Found" });
         return res.status(200).json(val);
@@ -262,14 +292,38 @@ app.get("/allGateways", async (req, res) => {
     }
 })
 
-app.post("/toggleOptimizer", (req, res) => {
-    const { toggle, GatewayId, OptimizerId } = req.body;
-    if (toggle === 'undefined' || !GatewayId || !OptimizerId) {
-        return res.send("We received your request");
+app.post("/toggleOptimizerIDDashboard", async (req, res) => {
+    try {
+        const { GatewayID, OptimizerID, Flag } = req.body;
+        if (!GatewayID || !OptimizerID || !Flag)
+            return res.status(500).json({ message: "Please provide GatewayID, OptimizerID, and Flag" });
+        await ToggleModel.findOneAndUpdate({ GatewayID, OptimizerID }, { Flag }, { upsert: true });
+        res.status(200).json({ message: "We Received your request and start processing" });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
-    res.json(req.body);
+})
+
+app.post("/toggleOptimizerIDGateway", async (req, res) => {
+    try {
+        console.log(req.body);
+        if (!req.body || !req.body.GatewayID)
+            return res.status(500).json({ message: "Please provide GatewayID" });
+        const data = await ToggleModel.find(req.body);
+        const arr = [];
+        for(const d of data){
+            const {OptimizerID,Flag} = d;
+            arr.push({OptimizerID,Flag})
+        }
+        await ToggleModel.deleteMany(req.body);
+        res.status(200).json(arr);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
 })
 
 app.listen(5000, () => {
     console.log('server is running on port 5000');
-});
+}); 

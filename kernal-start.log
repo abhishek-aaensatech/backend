@@ -1,0 +1,1459 @@
+[   51.773211] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=8
+
+[    0.000000] Reserved memory: reserved region for node 'pheripheral_region@0': base 0x8d500000, size 7 MiB
+[    0.000000] Reserved memory: reserved region for node 'splash_region@83000000': base 0x83000000, size 12 MiB
+[    0.000000] Removed memory: created DMA memory pool at 0x87900000, size 7 MiB
+[    0.000000] Reserved memory: initialized node external_image__region@0, compatible id removed-dma-pool
+[    0.000000] Removed memory: created DMA memory pool at 0x88000000, size 85 MiB
+[    0.000000] Reserved memory: initialized node modem_adsp_region@0, compatible id removed-dma-pool
+[    0.000000] Removed memory: created DMA memory pool at 0x8d500000, size 7 MiB
+[    0.000000] Reserved memory: initialized node pheripheral_region@0, compatible id removed-dma-pool
+[    0.000000] Reserved memory: allocated memory for 'venus_qseecom_region@0' node: base 0x8f800000, size 8 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0x8f800000, size 8 MiB
+[    0.000000] Reserved memory: initialized node venus_qseecom_region@0, compatible id shared-dma-pool
+[    0.000000] Reserved memory: allocated memory for 'audio_region@0' node: base 0xbfc00000, size 4 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0xbfc00000, size 4 MiB
+[    0.000000] Reserved memory: initialized node audio_region@0, compatible id shared-dma-pool
+[    0.000000] Reserved memory: allocated memory for 'adsp_region@0' node: base 0xbf800000, size 4 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0xbf800000, size 4 MiB
+[    0.000000] Reserved memory: initialized node adsp_region@0, compatible id shared-dma-pool
+[    0.000000] Reserved memory: allocated memory for 'linux,cma' node: base 0xbec00000, size 12 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0xbec00000, size 12 MiB
+[    0.000000] Reserved memory: initialized node linux,cma, compatible id shared-dma-pool
+[    0.000000] Reserved memory: allocated memory for 'secure_region' node: base 0xbd800000, size 20 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0xbd800000, size 20 MiB
+[    0.000000] Reserved memory: initialized node secure_region, compatible id shared-dma-pool
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] On node 0 totalpages: 236800
+[    0.000000] free_area_init_node: node 0, pgdat c151f140, node_mem_map edeae000
+[    0.000000]   Normal zone: 4560 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 169216 pages, LIFO batch:31
+[    0.000000]   HighMem zone: 1584 pages used for memmap
+[    0.000000]   HighMem zone: 67584 pages, LIFO batch:15
+[    0.000000] PERCPU: max_distance=0xb000 too large for vmalloc space 0x0
+[    0.000000] PERCPU: Embedded 11 pages/cpu @edde9000 s14976 r8192 d21888 u45056
+[    0.000000] pcpu-alloc: s14976 r8192 d21888 u45056 alloc=11*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 232240
+[    0.000000] Kernel command line: sched_enable_hmp=1 noinitrd ro console=ttyHSL0,115200,n8 androidboot.hardware=qcom ehci-hcd.park=3 msm_rtb.filter=0x37 lpm_levels.sleep_disabled=1 rootwait androidboot.bootdevice=7824900.sdhci androidboot.bootdevice=7824900.sdhci androidboot.serialno=d859076c androidboot.baseband=msm mdss_mdp3.panel=1:dsi:0:qcom,mdss_dsi_ili9881d_720p_video:1:none:cfg:single_dsi root=/dev/mmcblk0p21
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] allocated 2097152 bytes of page_cgroup
+[    0.000000] please try 'cgroup_disable=memory' option if you don't want memory cgroups
+[    0.000000] Memory: 835760K/947200K available (12288K kernel code, 1516K rwdata, 5596K rodata, 818K init, 1574K bss, 62288K reserved, 49152K cma-reserved, 229376K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xef800000 - 0xff000000   ( 248 MB)
+[    0.000000]     lowmem  : 0xcdc00000 - 0xef800000   ( 540 MB)
+[    0.000000]     vmalloc : 0xc7900000 - 0xcdc00000   (  99 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xc7900000   ( 121 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc0d00000   (13280 kB)
+[    0.000000]       .init : 0xc1300000 - 0xc13cca80   ( 819 kB)
+[    0.000000]       .data : 0xc1400000 - 0xc157b040   (1517 kB)
+[    0.000000]        .bss : 0xc157b104 - 0xc1704a6c   (1575 kB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] HMP scheduling enabled.
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000]  RCU dyntick-idle grace-period acceleration is enabled.
+[    0.000000]
+[    0.000000] **********************************************************
+[    0.000000] **   NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE   **
+[    0.000000] **                                                      **
+[    0.000000] ** trace_printk() being used. Allocating extra memory.  **
+[    0.000000] **                                                      **
+[    0.000000] ** This means that this is a DEBUG kernel and it is     **
+[    0.000000] ** unsafe for produciton use.                           **
+[    0.000000] **                                                      **
+[    0.000000] ** If you see this message and you are not debugging    **
+[    0.000000] ** the kernel, report this immediately to your vendor!  **
+[    0.000000] **                                                      **
+[    0.000000] **   NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE   **
+[    0.000000] **********************************************************
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] mpm_init_irq_domain(): Cannot find irq controller for qcom,gpio-parent
+[    0.000000] MPM 1 irq mapping errored -517
+[    0.000000] Architected cp15 and mmio timer(s) running at 19.20MHz (virt/virt).
+[    0.000008] sched_clock: 56 bits at 19MHz, resolution 52ns, wraps every 3579139424256ns
+[    0.000025] Switching to timer-based delay loop, resolution 52ns
+[    0.000046] Switched to clocksource arch_sys_counter
+[    0.001445] Console: colour dummy device 80x30
+[    0.001461] kmemleak: Kernel memory leak detector disabled
+[    0.001486] Calibrating delay loop (skipped), value calculated using timer frequency.. 38.40 BogoMIPS (lpj=192000)
+[    0.001505] pid_max: default: 32768 minimum: 301
+[    0.001750] Security Framework initialized
+[    0.001934] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.001977] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.003458] Initializing cgroup subsys memory
+[    0.003498] Initializing cgroup subsys freezer
+[    0.003522] Initializing cgroup subsys debug
+[    0.003602] CPU: Testing write buffer coherency: ok
+[    0.004465] /cpus/cpu@0 missing clock-frequency property
+[    0.004488] /cpus/cpu@1 missing clock-frequency property
+[    0.004509] /cpus/cpu@2 missing clock-frequency property
+[    0.004532] /cpus/cpu@3 missing clock-frequency property
+[    0.004741] Setting up static identity map for 0x80c5ca40 - 0x80c5ca98
+[    0.044722] MSM Memory Dump base table set up
+[    0.044817] MSM Memory Dump apps data table set up
+[    0.060475] CPU1: Booted secondary processor
+[    0.071378] CPU2: Booted secondary processor
+[    0.081984] CPU3: Booted secondary processor
+[    0.082241] Brought up 4 CPUs
+[    0.082273] SMP: Total of 4 processors activated (153.60 BogoMIPS).
+[    0.082283] CPU: All CPU(s) started in SVC mode.
+[    0.084821] devtmpfs: initialized
+[    0.090338] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.141813] pinctrl core: initialized pinctrl subsystem
+[    0.142590] regulator-dummy: no parameters
+[    0.288149] NET: Registered protocol family 16
+[    0.305694] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.360156] cpuidle: using governor ladder
+[    0.440108] cpuidle: using governor menu
+[    0.460143] cpuidle: using governor qcom
+[    0.496828] spmi_pmic_arb 200f000.qcom,spmi: missing property: qcom,pmic-arb-max-peripherals
+[    0.496850] spmi_pmic_arb 200f000.qcom,spmi: PMIC Arb Version-2 0x20010000
+[    0.497566] spmi_pmic_arb 200f000.qcom,spmi: missing property: qcom,pmic-arb-max-periph-interrupts
+[    0.508108] irq: no irq domain found for /soc/pinctrl@1000000 !
+[    0.508902] msm_watchdog b017000.qcom,wdt: wdog absent resource not present
+[    0.509459] msm_watchdog b017000.qcom,wdt: MSM Watchdog Initialized
+[    0.513880] platform 1de0000.qcom,venus: assigned reserved memory node venus_qseecom_region@0
+[    0.519007] platform soc:qcom,mdsprpc-mem: assigned reserved memory node adsp_region@0
+[    0.522004] platform a21b000.qcom,pronto: assigned reserved memory node pheripheral_region@0
+[    0.522579] platform 4080000.qcom,mss: assigned reserved memory node modem_adsp_region@0
+[    0.530426] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.530444] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.531899] gpiochip_add: registered GPIOs 0 to 112 on device: 1000000.pinctrl
+[    0.531924] GPIO chip 1000000.pinctrl: created GPIO range 0->112 ==> 1000000.pinctrl PIN 0->112
+[    0.534375] __of_mpm_init(): MPM driver mapping exists
+[    0.535252] msm_rpm_glink_dt_parse: qcom,rpm-glink compatible not matches
+[    0.535269] msm_rpm_dev_probe: APSS-RPM communication over SMD
+[    0.535282] smd_open() before smd_init()
+[    0.537641] msm_mpm_dev_probe(): Cannot get clk resource for XO: -517
+[    0.542501] smd_channel_probe_now: allocation table not initialized
+[    0.542745] smd_channel_probe_now: allocation table not initialized
+[    0.551492] msm_thermal:vdd_restriction_reg_init Defer regulator vdd-dig probe
+[    0.551512] msm_thermal:probe_vdd_rstr Err regulator init. err:-517. KTM continues.
+[    0.551532] msm-thermal soc:qcom,msm-thermal: probe_vdd_rstr:Failed reading node=/soc/qcom,msm-thermal, key=qcom,min-level. err=-517. KTM continues
+[    0.551547] msm_thermal:msm_thermal_dev_probe Failed reading node=/soc/qcom,msm-thermal, key=qcom,online-hotplug-core. err:-517
+[    0.554454] sps:sps is ready.
+[    0.558551] msm_rpm_glink_dt_parse: qcom,rpm-glink compatible not matches
+[    0.558568] msm_rpm_dev_probe: APSS-RPM communication over SMD
+[    0.559844] pm8909_s1_corner: 0 <--> 0 mV at 0 mV normal idle
+[    0.560924] pm8909_s1_corner_ao: 0 <--> 0 mV at 0 mV normal idle
+[    0.561943] pm8909_s1_floor_corner: 0 <--> 0 mV at 0 mV normal idle
+[    0.562941] pm8909_s1_corner_so: 0 <--> 0 mV at 0 mV normal idle
+[    0.564279] pm8909_s2: 1850 mV normal idle
+[    0.565556] pm8909_l1: 1000 mV normal idle
+[    0.567000] pm8909_l2: 1200 mV normal idle
+[    0.568331] pm8909_l3: 500 <--> 1350 mV at 0 mV normal idle
+[    0.569345] pm8909_l3_corner_ao: 0 <--> 0 mV at 0 mV normal idle
+[    0.570367] pm8909_l3_corner_so: 0 <--> 0 mV at 0 mV normal idle
+[    0.571740] pm8909_l4: 1800 mV normal idle
+[    0.573084] pm8909_l5: 1800 mV normal idle
+[    0.574532] pm8909_l6: 1800 mV normal idle
+[    0.575920] pm8909_l7: 1800 mV normal idle
+[    0.576870] pm8909_l7_ao: 1800 mV normal idle
+[    0.577879] pm8909_l7_so: 1800 mV normal idle
+[    0.579191] pm8909_l8: 2850 <--> 2900 mV at 2850 mV normal idle
+[    0.580602] pm8909_l9: 3000 <--> 3300 mV at 3000 mV normal idle
+[    0.581951] pm8909_l10: 1225 <--> 1300 mV at 1225 mV normal idle
+[    0.583303] pm8909_l11: 1800 <--> 2950 mV at 1800 mV normal idle
+[    0.584612] pm8909_l12: 1800 <--> 2950 mV at 1800 mV normal idle
+[    0.586006] pm8909_l13: 3075 mV normal idle
+[    0.587294] pm8909_l14: 1800 <--> 3000 mV at 1800 mV normal idle
+[    0.588676] pm8909_l15: 1800 <--> 3000 mV at 1800 mV normal idle
+[    0.589978] pm8909_l17: 2800 <--> 2850 mV at 2800 mV normal idle
+[    0.591430] pm8909_l18: 2700 mV normal idle
+[    0.591978] msm_mpm_dev_probe(): Cannot get clk resource for XO: -517
+[    0.592567] msm_thermal:sensor_mgr_init_threshold threshold id already initialized
+[    0.594472] cpu cpu0: dev_pm_opp_get_opp_count: device OPP not found (-19)
+[    0.594491] msm_thermal:get_cpu_freq_plan_len Error reading CPU0 freq table len. error:-19
+[    0.602720] qcom,rpmcc-8909 1800000.qcom,rpmcc: Registered RPM clocks.
+[    0.619792] qcom,gcc-8909 1800000.qcom,gcc: Registered GCC clocks
+[    0.620301] clock-a7 b011050.qcom,clock-a7: Speed bin: 2 PVS Version: 0
+[    0.620403] a7ssmux: set OPP pair(400000000 Hz: 4 uV) on cpu0
+[    0.620430] a7ssmux: set OPP pair(1094400000 Hz: 7 uV) on cpu0
+[    0.722722] gpiochip_find_base: found new base at 1022
+[    0.723019] gpiochip_add: registered GPIOs 1022 to 1023 on device: pm8909-mpp
+[    0.723178] qcom,qpnp-pin qpnp-pin-2: qpnp_pin_probe: gpio_chip registered between 1022-1023
+[    0.723318] gpiochip_find_base: found new base at 1021
+[    0.723558] gpiochip_add: registered GPIOs 1021 to 1021 on device: pm8909-gpio
+[    0.723622] qcom,qpnp-pin qpnp-pin-3: qpnp_pin_probe: gpio_chip registered between 1021-1021
+[    0.725159] KPI: Bootloader start count = 16169
+[    0.725174] KPI: Bootloader end count = 71019
+[    0.725184] KPI: Bootloader display count = 56033
+[    0.725194] KPI: Bootloader load kernel count = 4184
+[    0.725205] KPI: Kernel MPM timestamp = 141827
+[    0.725214] KPI: Kernel MPM Clock frequency = 32768
+[    0.725249] socinfo_print: v0.10, id=245, ver=2.0, raw_id=2400, raw_ver=1, hw_plat=8, hw_plat_ver=65536
+[    0.725249]  accessory_chip=0, hw_plat_subtype=0, pmic_model=65549, pmic_die_revision=65537 foundry_id=1 serial_number=592618769
+[    0.726281] of_get_named_gpiod_flags: parsed 'gpio' property of node '/soc/regulator_spk[0]' - status (0)
+[    0.726643] spk_vreg: no parameters
+[    0.727280] of_get_named_gpiod_flags: parsed 'gpio' property of node '/soc/oem_otg_ext_vreg[0]' - status (0)
+[    0.727575] oem_otg_ext_vreg: no parameters
+[    0.729983] SCSI subsystem initialized
+[    0.731460] usbcore: registered new interface driver usbfs
+[    0.731613] usbcore: registered new interface driver hub
+[    0.731907] usbcore: registered new device driver usb
+[    0.733080] i2c-msm-v2 78b6000.i2c: probing driver i2c-msm-v2
+[    0.733282] AXI: msm_bus_scale_register_client(): msm_bus_scale_register_client: Bus driver not ready.
+[    0.733300] i2c-msm-v2 78b6000.i2c: msm_bus_scale_register_client(mstr-id:86):0 (not a problem)
+[    0.734777] kworker/u8:2 (45) used greatest stack depth: 6900 bytes left
+[    0.735504] i2c-msm-v2 78b8000.i2c: probing driver i2c-msm-v2
+[    0.735692] AXI: msm_bus_scale_register_client(): msm_bus_scale_register_client: Bus driver not ready.
+[    0.735709] i2c-msm-v2 78b8000.i2c: msm_bus_scale_register_client(mstr-id:86):0 (not a problem)
+[    0.736925] i2c-msm-v2 78b7000.i2c: probing driver i2c-msm-v2
+[    0.737102] AXI: msm_bus_scale_register_client(): msm_bus_scale_register_client: Bus driver not ready.
+[    0.737118] i2c-msm-v2 78b7000.i2c: msm_bus_scale_register_client(mstr-id:86):0 (not a problem)
+[    0.738331] kworker/u8:2 (47) used greatest stack depth: 6688 bytes left
+[    0.741155] i2c-msm-v2 78b5000.i2c: probing driver i2c-msm-v2
+[    0.741351] AXI: msm_bus_scale_register_client(): msm_bus_scale_register_client: Bus driver not ready.
+[    0.741369] i2c-msm-v2 78b5000.i2c: msm_bus_scale_register_client(mstr-id:86):0 (not a problem)
+[    0.746336] media: Linux media interface: v0.10
+[    0.746478] Linux video capture interface: v2.00
+[    0.747072] BATTERY: batterydata_init: Battery-data device created!
+[    0.748561] cpufreq: driver msm up and running
+[    0.749339] platform soc:qcom,ion:qcom,ion-heap@27: assigned reserved memory node venus_qseecom_region@0
+[    0.749800] platform soc:qcom,ion:qcom,ion-heap@28: assigned reserved memory node audio_region@0
+[    0.750214] platform soc:qcom,ion:qcom,ion-heap@26: assigned reserved memory node modem_adsp_region@0
+[    0.750623] platform soc:qcom,ion:qcom,ion-heap@22: assigned reserved memory node adsp_region@0
+[    0.750961] platform soc:qcom,ion:qcom,ion-heap@10: assigned reserved memory node secure_region
+[    0.751779] ION heap system created
+[    0.752031] ION heap qsecom created at 0x8f800000 with size 800000
+[    0.752056] ION heap audio created at 0xbfc00000 with size 400000
+[    0.752077] ION heap pil_2 created at 0x88000000 with size 5500000
+[    0.752098] ION heap adsp created at 0xbf800000 with size 400000
+[    0.752162] ION heap secure_display created at 0xbd800000 with size 1400000
+[    0.752771] msm_bus_fabric_init_driver
+[    0.754237] msm_bus_device 580000.ad-hoc-bus: Coresight support absent for bus: 2048
+[    0.780353] qcom,qpnp-power-on qpnp-power-on-1: PMIC@SID0 Power-on reason: Triggered from USB (USB charger insertion) and 'cold' boot
+[    0.780380] qcom,qpnp-power-on qpnp-power-on-1: PMIC@SID0: Unknown power-off reason
+[    0.780797] input: qpnp_pon as /devices/virtual/input/input0
+[    0.781907] geoff_type=13
+[    0.781918] PMIC@SID0: PM8909 v1.1 options: 2, 2, 0, 0
+[    0.782475] gdsc_venus: no parameters
+[    0.783014] gdsc_mdss: no parameters
+[    0.783608] gdsc_vfe: no parameters
+[    0.784041] gdsc_oxili_gx: no parameters
+[    0.784597] gdsc_venus_core0: fast normal
+[    0.785811] mdss_pll_probe: MDSS pll label = MDSS DSI 0 PLL
+[    0.785852] mdss_pll_util_parse_dt_supply: : error reading ulp load. rc=-22
+[    0.785871] mdss_pll_util_parse_dt_supply: : error reading ulp load. rc=-22
+[    0.786943] dsi_pll_clock_register_lpm: Registered DSI PLL:0 clocks successfully
+[    0.788290] msm_iommu 1f00000.qcom,iommu: device gfx_iommu (model: 500) mapped at c7bc0000, with 2 ctx banks
+[    0.789615] msm_iommu 1e00000.qcom,iommu: device apps_iommu (model: 500) mapped at c8480000, with 22 ctx banks
+[    0.799586] msm_iommu_ctx 1f09000.qcom,iommu-ctx: context gfx3d_user using bank 1
+[    0.799957] msm_iommu_ctx 1f0a000.qcom,iommu-ctx: context gfx3d_priv using bank 2
+[    0.800356] msm_iommu_ctx 1e22000.qcom,iommu-ctx: context MSA0_Audio using bank 2
+[    0.800700] msm_iommu_ctx 1e23000.qcom,iommu-ctx: context vfe using bank 3
+[    0.801049] msm_iommu_ctx 1e24000.qcom,iommu-ctx: context mdp_0 using bank 4
+[    0.801369] msm_iommu_ctx 1e25000.qcom,iommu-ctx: context venus_ns using bank 5
+[    0.801683] msm_iommu_ctx 1e27000.qcom,iommu-ctx: context mDSP using bank 7
+[    0.802064] msm_iommu_ctx 1e28000.qcom,iommu-ctx: context gss using bank 8
+[    0.802411] msm_iommu_ctx 1e29000.qcom,iommu-ctx: context a2 using bank 9
+[    0.802738] msm_iommu_ctx 1e32000.qcom,iommu-ctx: context mdp_1 using bank 18
+[    0.803056] msm_iommu_ctx 1e33000.qcom,iommu-ctx: context venus_sec_pixel using bank 19
+[    0.803440] msm_iommu_ctx 1e34000.qcom,iommu-ctx: context venus_sec_bitstream using bank 20
+[    0.803765] msm_iommu_ctx 1e35000.qcom,iommu-ctx: context venus_sec_non_pixel using bank 21
+[    0.804083] msm_iommu_ctx 1e36000.qcom,iommu-ctx: context venus_fw using bank 22
+[    0.804470] msm_iommu_ctx 1e37000.qcom,iommu-ctx: context periph_rpm using bank 23
+[    0.804862] msm_iommu_ctx 1e38000.qcom,iommu-ctx: context periph_CE using bank 24
+[    0.805266] msm_iommu_ctx 1e39000.qcom,iommu-ctx: context periph_BLSP using bank 25
+[    0.805590] msm_iommu_ctx 1e3a000.qcom,iommu-ctx: context periph_SDC1 using bank 26
+[    0.805930] msm_iommu_ctx 1e3b000.qcom,iommu-ctx: context periph_SDC2 using bank 27
+[    0.806247] msm_iommu_ctx 1e3c000.qcom,iommu-ctx: context periph_audio using bank 28
+[    0.806561] msm_iommu_ctx 1e3d000.qcom,iommu-ctx: context periph_USB_HS1 using bank 29
+[    0.806874] msm_iommu_ctx 1e2a000.qcom,iommu-ctx: context qpic using bank 10
+[    0.807240] msm_iommu_ctx 1e31000.qcom,iommu-ctx: context wlan using bank 17
+[    0.807342] msm_iommu_ctx 1e3f000.qcom,iommu-ctx: context periph_CE_secure using bank 31
+[    0.809595] Advanced Linux Sound Architecture Driver Initialized.
+[    0.811771] Bluetooth: ed619ed8
+[    0.811870] NET: Registered protocol family 31
+[    0.811880] Bluetooth: ed619ed8
+[    0.811898] Bluetooth: ed619ed0Bluetooth: ed619eb8
+[    0.811958] Bluetooth: ed619ec8<6>[    0.812644] cfg80211: Calling CRDA to update world regulatory domain
+[    0.812687] cfg80211: World regulatory domain updated:
+[    0.812696] cfg80211:  DFS Master region: unset
+[    0.812702] cfg80211:   (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp), (dfs_cac_time)
+[    0.812714] cfg80211:   (2402000 KHz - 2472000 KHz @ 40000 KHz), (N/A, 2000 mBm), (N/A)
+[    0.812724] cfg80211:   (2457000 KHz - 2482000 KHz @ 40000 KHz), (N/A, 2000 mBm), (N/A)
+[    0.812734] cfg80211:   (2474000 KHz - 2494000 KHz @ 20000 KHz), (N/A, 2000 mBm), (N/A)
+[    0.812744] cfg80211:   (5170000 KHz - 5250000 KHz @ 80000 KHz), (N/A, 2000 mBm), (N/A)
+[    0.812754] cfg80211:   (5250000 KHz - 5330000 KHz @ 80000 KHz), (N/A, 2000 mBm), (N/A)
+[    0.812764] cfg80211:   (5490000 KHz - 5710000 KHz @ 80000 KHz), (N/A, 2000 mBm), (N/A)
+[    0.812774] cfg80211:   (5735000 KHz - 5835000 KHz @ 80000 KHz), (N/A, 2000 mBm), (N/A)
+[    0.812784] cfg80211:   (57240000 KHz - 63720000 KHz @ 2160000 KHz), (N/A, 0 mBm), (N/A)
+[    0.812840] NetLabel: Initializing
+[    0.812849] NetLabel:  domain hash size = 128
+[    0.812856] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.812924] NetLabel:  unlabeled traffic allowed by default
+[    0.814264] Switched to clocksource arch_sys_counter
+[    0.902446] NET: Registered protocol family 2
+[    0.903570] TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.904095] TCP bind hash table entries: 8192 (order: 5, 163840 bytes)
+[    0.904262] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.904448] TCP: reno registered
+[    0.904535] UDP hash table entries: 512 (order: 2, 24576 bytes)
+[    0.904637] UDP-Lite hash table entries: 512 (order: 2, 24576 bytes)
+[    0.905036] NET: Registered protocol family 1
+[    0.906025] gcc-mdss-8909 soc:qcom,gcc-mdss@1ac8300: Registered GCC MDSS clocks.
+[    0.908906] hw perfevents: enabled with armv7_cortex_a7 PMU driver, 5 counters available
+[    0.912048] futex hash table entries: 1024 (order: 4, 65536 bytes)
+[    0.912099] Initialise system trusted keyring
+[    0.919707] vmscan: error setting kswapd cpu affinity mask
+[    0.933990] VFS: Disk quotas dquot_6.5.2
+[    0.934363] Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.937529] Registering sdcardfs 0.1
+[    0.938309] fuse init (API version 7.23)
+[    0.944737] Key type asymmetric registered
+[    0.944758] Asymmetric key parser 'x509' registered
+[    0.945679] bounce: pool size: 64 pages
+[    0.946066] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    0.946088] io scheduler noop registered
+[    0.946103] io scheduler deadline registered
+[    0.946465] io scheduler cfq registered (default)
+[    0.946643] gpiochip_find_base: found new base at 989
+[    0.946828] gpiochip_add: registered GPIOs 989 to 1020 on device: smp2p
+[    0.947225] gpiochip_find_base: found new base at 957
+[    0.947445] gpiochip_add: registered GPIOs 957 to 988 on device: smp2p
+[    0.947508] gpiochip_find_base: found new base at 925
+[    0.947678] gpiochip_add: registered GPIOs 925 to 956 on device: smp2p
+[    0.948029] gpiochip_find_base: found new base at 893
+[    0.948196] gpiochip_add: registered GPIOs 893 to 924 on device: smp2p
+[    0.948258] gpiochip_find_base: found new base at 861
+[    0.948452] gpiochip_add: registered GPIOs 861 to 892 on device: smp2p
+[    0.949135] gpiochip_find_base: found new base at 829
+[    0.949314] gpiochip_add: registered GPIOs 829 to 860 on device: smp2p
+[    0.949375] gpiochip_find_base: found new base at 797
+[    0.949575] gpiochip_add: registered GPIOs 797 to 828 on device: slave-kernel
+[    0.949767] gpiochip_find_base: found new base at 797
+[    0.949931] gpiochip_add: registered GPIOs 797 to 828 on device: master-kernel
+[    0.950170] gpiochip_find_base: found new base at 797
+[    0.950344] gpiochip_add: registered GPIOs 797 to 828 on device: slave-kernel
+[    0.950524] gpiochip_find_base: found new base at 797
+[    0.950690] gpiochip_add: registered GPIOs 797 to 828 on device: master-kernel
+[    0.951797] gpio_user_probe: start
+[    0.952241] gpio_user_probe: suecceeded
+[    0.954264] xlog_status: enable:0, panic:1, dump:2
+[    0.957482] mdss_smmu_util_parse_dt_clock: clocks are not defined
+[    0.957619] mdss_smmu_probe: iommu v2 domain[0] mapping and clk register successful!
+[    0.957692] mdss_smmu_util_parse_dt_clock: clocks are not defined
+[    0.957715] mdss_smmu_probe: iommu v2 domain[2] mapping and clk register successful!
+[    0.958658] mdss_dsi_get_dt_vreg_data: error reading ulp load. rc=-22
+[    0.958685] mdss_dsi_get_dt_vreg_data: error reading ulp load. rc=-22
+[    0.958709] mdss_dsi_get_dt_vreg_data: error reading ulp load. rc=-22
+[    0.960398] mdss_dsi_ctrl_probe: DSI Ctrl name = MDSS DSI CTRL->0
+[    0.960905] mdss_dsi_find_panel_of_node: cmdline:0:qcom,mdss_dsi_ili9881d_720p_video:1:none:cfg:single_dsi panel_name:qcom,mdss_dsi_ili9881d_720p_video
+[    0.960937] mdss_dsi_panel_init: Panel Name = ili9881d 720p video mode dsi panel
+[    0.961131] mdss_dsi_panel_timing_from_dt: found new timing "qcom,mdss_dsi_ili9881d_720p_video" (ed6197e8)
+[    0.961169] mdss_dsi_parse_dcs_cmds: failed, key=qcom,mdss-dsi-post-panel-on-command
+[    0.961182] mdss_dsi_parse_dcs_cmds: failed, key=qcom,mdss-dsi-timing-switch-command
+[    0.961191] mdss_dsi_panel_get_dsc_cfg_np: cannot find dsc config node:
+[    0.961317] mdss_dsi_parse_dcs_cmds: failed, key=qcom,mdss-dsi-idle-on-command
+[    0.961330] mdss_dsi_parse_dcs_cmds: failed, key=qcom,mdss-dsi-idle-off-command
+[    0.961360] mdss_dsi_parse_panel_features: ulps feature disabled
+[    0.961371] mdss_dsi_parse_panel_features: ulps during suspend feature disabled
+[    0.961382] mdss_dsi_parse_dms_config: dynamic switch feature enabled: 0
+[    0.961408] of_get_named_gpiod_flags: can't parse 'qcom,5v-boost-gpio' property of node '/soc/qcom,mdss_mdp@1a00000/qcom,mdss_dsi_ili9881d_720p_video[0]'
+[    0.961421] mdss_dsi_parse_dcs_cmds: failed, key=qcom,mdss-dsi-lp-mode-on
+[    0.961434] mdss_dsi_parse_dcs_cmds: failed, key=qcom,mdss-dsi-lp-mode-off
+[    0.961506] of_get_named_gpiod_flags: parsed 'qcom,mdss-dsi-pwm-gpio' property of node '/soc/qcom,mdss_mdp@1a00000/qcom,mdss_dsi_ili9881d_720p_video[0]' - status (0)
+[    0.961542] mdss_dsi_get_dt_vreg_data: error reading ulp load. rc=-22
+[    0.961560] mdss_dsi_get_dt_vreg_data: error reading ulp load. rc=-22
+[    0.961799] mdss_dsi_parse_ctrl_params:4057 Unable to read qcom,display-id, data=00000000,len=45
+[    0.961846] of_get_named_gpiod_flags: parsed 'qcom,platform-enable-gpio' property of node '/soc/qcom,mdss_dsi@0/qcom,mdss_dsi_ctrl0@1ac8000[0]' - status (0)
+[    0.961860] of_get_named_gpiod_flags: can't parse 'qcom,platform-te-gpio' property of node '/soc/qcom,mdss_dsi@0/qcom,mdss_dsi_ctrl0@1ac8000[0]'
+[    0.961868] mdss_dsi_parse_gpio_params:4092, TE gpio not specified
+[    0.961881] of_get_named_gpiod_flags: can't parse 'qcom,platform-bklight-en-gpio' property of node '/soc/qcom,mdss_dsi@0/qcom,mdss_dsi_ctrl0@1ac8000[0]'
+[    0.961888] mdss_dsi_parse_gpio_params: bklt_en gpio not specified
+[    0.961925] of_get_named_gpiod_flags: parsed 'qcom,platform-reset-gpio' property of node '/soc/qcom,mdss_dsi@0/qcom,mdss_dsi_ctrl0@1ac8000[0]' - status (0)
+[    0.961939] of_get_named_gpiod_flags: can't parse 'qcom,platform-intf-mux-gpio' property of node '/soc/qcom,mdss_dsi@0/qcom,mdss_dsi_ctrl0@1ac8000[0]'
+[    0.961981] mdss_dsi_retrieve_ctrl_resources: phy_regulator_base=c7af6780 phy_regulator_size=30
+[    0.961992] mdss_dsi_retrieve_ctrl_resources: ctrl_base=c7ada000 ctrl_size=25c phy_base=c7af4500 phy_size=280
+[    0.962497] dsi_panel_device_register: Continuous splash enabled
+[    0.962769] mdss_register_panel: adding framebuffer device 1ac8000.qcom,mdss_dsi_ctrl0
+[    0.970735] mdss_dsi_ctrl_probe: Dsi Ctrl->0 initialized, DSI rev:0x10030001, PHY rev:0x1
+[    0.971289] mdss_dsi_status_init: DSI status check interval:5000
+[    0.972482] mdss_fb_probe: fb0: split_mode:0 left:0 right:0
+[    0.974001] mdss_fb_register: FrameBuffer[0] 720x1280 registered successfully!
+[    0.974240] mdp3_ctrl_init: mdp3_ctrl_init
+[    0.974747] mdp3 1a00000.qcom,mdss_mdp: Unbalanced pm_runtime_enable!
+[    0.979150] IPC_RTR: msm_ipc_router_smd_driver_register Already driver registered IPCRTR
+[    0.996136] In memshare_probe, Memshare probe success
+[    0.999733] msm_rpm_log_probe: OK
+[    1.001666] subsys-pil-tz 1de0000.qcom,venus: for venus segments only will be dumped.
+[    1.002851] of_get_named_gpiod_flags: parsed 'qcom,gpio-proxy-unvote' property of node '/soc/qcom,pronto@a21b000[0]' - status (-517)
+[    1.005162] pil-q6v5-mss 4080000.qcom,mss: Failed to find the pas_id.
+[    1.005204] of_get_named_gpiod_flags: parsed 'qcom,gpio-proxy-unvote' property of node '/soc/qcom,mss@4080000[0]' - status (-517)
+[    1.007202] msm_serial_hs module loaded
+[    1.007689] msm_serial_hsl_probe: detected port #0 (ttyHSL0)
+[    1.007752] AXI: get_pdata(): Error: Client name not found
+[    1.007761] AXI: msm_bus_cl_get_pdata(): client has to provide missing entry for successful registration
+[    1.007769] msm_serial_hsl_probe: Bus scaling is disabled
+[    1.007950] 78af000.serial: ttyHSL0 at MMIO 0x78af000 (irq = 38, base_baud = 460800) is a MSM
+[    1.008011] msm_hsl_console_setup: console setup on port #0
+[    3.325869] console [ttyHSL0] enabled
+[    3.330238] msm_serial_hsl_probe: detected port #1 (ttyHSL1)
+[    3.335169] AXI: get_pdata(): Error: Client name not found
+[    3.340609] AXI: msm_bus_cl_get_pdata(): client has to provide missing entry for successful registration
+[    3.350067] msm_serial_hsl_probe: Bus scaling is disabled
+[    3.355641] 78b0000.serial: ttyHSL1 at MMIO 0x78b0000 (irq = 39, base_baud = 460800) is a MSM
+[    3.364797] msm_serial_hsl_init: driver initialized
+[    3.418967] brd: module loaded
+[    3.427875] loop: module loaded
+[    3.431125] zram: Created 1 device(s) ...
+[    3.434985] QSEECOM: qseecom_probe: qseecom.qsee_version = 0x405000
+[    3.440429] QSEECOM: qseecom_retrieve_ce_data: Device does not support PFE
+[    3.447034] QSEECOM: qseecom_probe: qseecom clocks handled by other subsystem
+[    3.454346] QSEECOM: qseecom_probe: qsee reentrancy support phase is not defined, setting to default 0
+[    3.463818] QSEECOM: qseecom_probe: secure app region addr=0x87900000 size=0x300000
+[    3.471806] QSEECOM: qseecom_probe: qseecom.whitelist_support = 1
+[    3.484208] of_get_named_gpiod_flags: parsed 'avago,irq-gpio' property of node '/soc/i2c@78b5000/avago@39[0]' - status (0)
+[    3.484229] apds993x 1-0039: Unable to read cross_talk use default 100
+[    3.620591] i2c-msm-v2 78b5000.i2c: msm_bus_scale_register_client(mstr-id:86):0x6 (ok)
+[    3.627678] i2c-msm-v2 78b5000.i2c: BUS ERROR:noisy bus/unexpected start/stop tag: msgs(n:2 cur:0 tx) bc(rx:1 tx:1) mode:FIFO slv_addr:0x39 MSTR_STS:0x041121c4 OPER:0x00000010
+[    3.643190] apds993x 1-0039: Neither APDS993x nor APDS990x
+[    3.648560] apds993x 1-0039: Not a valid chip ID
+[    3.653621] i2c-core: driver [tabla-i2c-core] using legacy suspend method
+[    3.659931] i2c-core: driver [tabla-i2c-core] using legacy resume method
+[    3.666922] i2c-core: driver [wcd9xxx-i2c-core] using legacy suspend method
+[    3.673587] i2c-core: driver [wcd9xxx-i2c-core] using legacy resume method
+[    3.680654] i2c-core: driver [tasha-i2c-core] using legacy suspend method
+[    3.687188] i2c-core: driver [tasha-i2c-core] using legacy resume method
+[    3.695836] qce 720000.qcedev: Qualcomm Crypto 5.3.1 device found @0x720000
+[    3.701810] qce 720000.qcedev: CE device = 0x0
+[    3.701810] IO base, CE = 0xc7fc0000
+[    3.701810] Consumer (IN) PIPE 2,    Producer (OUT) PIPE 3
+[    3.701810] IO base BAM = 0x00000000
+[    3.701810] BAM IRQ 100
+[    3.701810] Engines Availability = 0x2010853
+[    3.726522] sps:BAM 0x00704000 is registered.
+[    3.730312] sps:BAM 0x00704000 (va:0xc8440000) enabled: ver:0x25, number of pipes:8
+[    3.738095] QCE50: qce_sps_init:  Qualcomm MSM CE-BAM at 0x0000000000704000 irq 100
+[    3.749288] qcrypto 720000.qcrypto: Qualcomm Crypto 5.3.1 device found @0x720000
+[    3.755735] qcrypto 720000.qcrypto: CE device = 0x0
+[    3.755735] IO base, CE = 0xc85c0000
+[    3.755735] Consumer (IN) PIPE 4,    Producer (OUT) PIPE 5
+[    3.755735] IO base BAM = 0x00000000
+[    3.755735] BAM IRQ 100
+[    3.755735] Engines Availability = 0x2010853
+[    3.780663] QCE50: qce_sps_init:  Qualcomm MSM CE-BAM at 0x0000000000704000 irq 100
+[    3.788341] qcrypto 720000.qcrypto: qcrypto-ecb-aes
+[    3.792600] qcrypto 720000.qcrypto: qcrypto-cbc-aes
+[    3.797326] qcrypto 720000.qcrypto: qcrypto-ctr-aes
+[    3.802217] qcrypto 720000.qcrypto: qcrypto-ecb-des
+[    3.807040] qcrypto 720000.qcrypto: qcrypto-cbc-des
+[    3.811935] qcrypto 720000.qcrypto: qcrypto-ecb-3des
+[    3.816891] qcrypto 720000.qcrypto: qcrypto-cbc-3des
+[    3.821831] qcrypto 720000.qcrypto: qcrypto-xts-aes
+[    3.826659] qcrypto 720000.qcrypto: qcrypto-sha1
+[    3.831291] qcrypto 720000.qcrypto: qcrypto-sha256
+[    3.836060] qcrypto 720000.qcrypto: qcrypto-aead-hmac-sha1-cbc-aes
+[    3.842233] qcrypto 720000.qcrypto: qcrypto-aead-hmac-sha1-cbc-des
+[    3.848358] qcrypto 720000.qcrypto: qcrypto-aead-hmac-sha1-cbc-3des
+[    3.854640] qcrypto 720000.qcrypto: qcrypto-aead-hmac-sha256-cbc-aes
+[    3.860979] qcrypto 720000.qcrypto: qcrypto-aead-hmac-sha256-cbc-des
+[    3.867281] qcrypto 720000.qcrypto: qcrypto-aead-hmac-sha256-cbc-3des
+[    3.873736] qcrypto 720000.qcrypto: qcrypto-hmac-sha1
+[    3.878738] qcrypto 720000.qcrypto: qcrypto-hmac-sha256
+[    3.883983] qcrypto 720000.qcrypto: qcrypto-aes-ccm
+[    3.888803] qcrypto 720000.qcrypto: qcrypto-rfc4309-aes-ccm
+[    3.894361] qcrypto: FIPS140-2 Known Answer Tests: Skipped
+[    3.900434] SCSI Media Changer driver v0.25
+[    3.905085] msm_nand_probe: disabling nand as boot device (0) is not NAND
+[    3.912997] of_get_named_gpiod_flags: can't parse 'qcom,gpio-clk' property of node '/soc/spi@78ba000[0]'
+[    3.913013] of_get_named_gpiod_flags: can't parse 'qcom,gpio-miso' property of node '/soc/spi@78ba000[0]'
+[    3.913025] of_get_named_gpiod_flags: can't parse 'qcom,gpio-mosi' property of node '/soc/spi@78ba000[0]'
+[    3.913036] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs0' property of node '/soc/spi@78ba000[0]'
+[    3.913048] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs1' property of node '/soc/spi@78ba000[0]'
+[    3.913059] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs2' property of node '/soc/spi@78ba000[0]'
+[    3.913070] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs3' property of node '/soc/spi@78ba000[0]'
+[    3.914768] sps: BAM device 0x07884000 is not registered yet.
+[    3.920483] sps:BAM 0x07884000 is registered.
+[    3.925232] sps:BAM 0x07884000 (va:0xc8740000) enabled: ver:0x18, number of pipes:16
+[    3.933793] of_get_named_gpiod_flags: can't parse 'qcom,gpio-clk' property of node '/soc/spi@78B8000[0]'
+[    3.933809] of_get_named_gpiod_flags: can't parse 'qcom,gpio-miso' property of node '/soc/sp   55.890593] send_filled_buffers_to_user: 5 callbacks suppressed
+[   55.898190] send_filled_buffers_to_user: Send Failed -3 drop_count = 109
+8B8000[0]'
+[    3.933821] of_get_named_gpiod_flags: can't parse 'qcom,gpio-mosi' property of node '/soc/spi@78B8000[0]'
+[    3.933833] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs0' property of node '/soc/spi@78B8000[0]'
+[    3.933844] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs1' property of node '/soc/spi@78B8000[0]'
+[    3.933856] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs2' property of node '/soc/spi@78B8000[0]'
+[    3.933867] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs3' property of node '/soc/spi@78B8000[0]'
+[    3.934412] of_get_named_gpiod_flags: can't parse 'qcom,gpio-clk' property of node '/soc/spi@78B9000[0]'
+[    3.934425] of_get_named_gpiod_flags: can't parse 'qcom,gpio-miso' property of node '/soc/spi@78B9000[0]'
+[    3.934437] of_get_named_gpiod_flags: can't parse 'qcom,gpio-mosi' property of node '/soc/spi@78B9000[0]'
+[    3.934448] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs0' property of node '/soc/spi@78B9000[0]'
+[    3.934460] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs1' property of node '/soc/spi@78B9000[0]'
+[    3.934471] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs2' property of node '/soc/spi@78B9000[0]'
+[    3.934483] of_get_named_gpiod_flags: can't parse 'qcom,gpio-cs3' property of node '/soc/spi@78B9000[0]'
+[    3.939451] tun: Universal TUN/TAP device driver, 1.6
+[    3.943505] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    3.949930] PPP generic driver version 2.4.2
+[    3.954258] PPP BSD Compression module registered
+[    3.958576] PPP Deflate Compression module registered
+[    3.963654] PPP MPPE Compression module registered
+[    3.968390] NET: Registered protocol family 24
+[    3.974353] wcnss_wlan probed in built-in mode
+[    3.988511] usbcore: registered new interface driver asix
+[    3.993082] usbcore: registered new interface driver ax88179_178a
+[    3.999037] usbcore: registered new interface driver cdc_ether
+[    4.004886] usbcore: registered new interface driver net1080
+[    4.010522] usbcore: registered new interface driver cdc_subset
+[    4.016393] usbcore: registered new interface driver zaurus
+[    4.022316] usbcore: registered new interface driver cdc_ncm
+[    4.027624] usbcore: registered new interface driver qmi_wwan_q
+[    4.033537] usbcore: registered new interface driver qmi_wwan
+[    4.039698] hyp_assign_table: Failed to assign memory protection, ret = -19
+[    4.041137] msm_sharedmem: sharedmem_register_qmi: qmi init successful
+[    4.052628] msm_sharedmem: setup_shared_ram_perms: hyp_assign_phys failed IPA=0x0160x87c00000 size=917504 err=-19
+[    4.063323] msm_sharedmem: msm_sharedmem_probe: Device created for client 'rmtfs'
+[    4.070763] msm_sharedmem: msm_sharedmem_probe: Device created for client 'rfsa_dsp'
+[    4.078429] msm_sharedmem: msm_sharedmem_probe: Device created for client 'rfsa_mdm'
+[    4.086526] msm_otg 78d9000.usb: msm_otg probe
+[    4.090915] of_get_named_gpiod_flags: can't parse 'qcom,hub-reset-gpio' property of node '/soc/usb@78d9000[0]'
+[    4.090930] of_get_named_gpiod_flags: can't parse 'qcom,usbeth-reset-gpio' property of node '/soc/usb@78d9000[0]'
+[    4.090942] of_get_named_gpiod_flags: can't parse 'qcom,sw-sel-gpio' property of node '/soc/usb@78d9000[0]'
+[    4.090954] of_get_named_gpiod_flags: can't parse 'qcom,usbid-gpio' property of node '/soc/usb@78d9000[0]'
+[    4.090974] of_get_named_gpiod_flags: can't parse 'qcom,hsusb-otg-vddmin-gpio' property of node '/soc/usb@78d9000[0]'
+[    4.094742] msm_otg 78d9000.usb: OTG regs = c7e36000
+[    4.102786] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    4.108295] ehci-msm: Qualcomm On-Chip EHCI Host Controller
+[    4.115280] usbcore: registered new interface driver cdc_acm
+[    4.119900] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    4.128030] usbcore: registered new interface driver cdc_wdm
+[    4.133679] usbcore: registered new interface driver usb-storage
+[    4.139586] usbcore: registered new interface driver ums-alauda
+[    4.145578] usbcore: registered new interface driver ums-cypress
+[    4.151512] usbcore: registered new interface driver ums-datafab
+[    4.157466] usbcore: registered new interface driver ums-freecom
+[    4.163487] usbcore: registered new interface driver ums-isd200
+[    4.169359] usbcore: registered new interface driver ums-jumpshot
+[    4.175466] usbcore: registered new interface driver ums-karma
+[    4.181282] usbcore: registered new interface driver ums-onetouch
+[    4.187328] usbcore: registered new interface driver ums-sddr09
+[    4.193262] usbcore: registered new interface driver ums-sddr55
+[    4.199134] usbcore: registered new interface driver ums-usbat
+[    4.205215] usbcore: registered new interface driver usbserial
+[    4.210838] usbcore: registered new interface driver cp210x
+[    4.216315] usbserial: USB Serial support registered for cp210x
+[    4.222261] usbcore: registered new interface driver option
+[    4.227771] usbserial: USB Serial support registered for GSM modem (1-port)
+[    4.234773] usbcore: registered new interface driver usb_ehset_test
+[    4.242731] gbridge_init: gbridge_init successs.
+[    4.248667] mousedev: PS/2 mouse device common for all mice
+[    4.248837] msm_otg 78d9000.usb: phy_reset: success
+[    4.258663] usbcore: registered new interface driver xpad
+[    4.265452] of_get_named_gpiod_flags: parsed 'invn,gpio-int' property of node '/soc/i2c@78b5000/mpu6050@68[0]' - status (0)
+[    4.265469] of_get_named_gpiod_flags: can't parse 'invn,gpio-en' property of node '/soc/i2c@78b5000/mpu6050@68[0]'
+[    4.265924] 1-0068 supply vi2c not found, using dummy regulator
+[    4.404403] i2c-msm-v2 78b5000.i2c: error timeout on polling for valid state. check core_clk
+[    4.411885] mpu6050 1-0068: Fail to read power mode, ret=-5
+[    4.417356] mpu6050 1-0068: Cannot get invalid chip type
+[    4.422837] mpu6050 1-0068: Probe device return error-5
+[    4.427884] mpu6050: probe of 1-0068 failed with error -5
+[    4.433377] AKM compass driver: initialize.
+[    4.437728] of_get_named_gpiod_flags: can't parse 'ak,gpio-rstn' property of node '/soc/i2c@78b5000/akm@c[0]'
+[    4.544265] i2c-msm-v2 78b5000.i2c: error timeout on polling for valid state. check core_clk
+[    4.551743] akm8963 1-000c: akm_i2c_txdata: transfer failed.
+[    4.557307] akm8963 1-000c: AKECS_Set_PowerDown: Can not set to powerdown mode.
+[    4.588761] i2c-msm-v2 78b5000.i2c: error timeout on polling for valid state. check core_clk
+[    4.596225] akm8963 1-000c: akm_i2c_rxdata: transfer failed.
+[    4.601974] akm8963: probe of 1-000c failed with error -5
+[    4.628035] i2c-msm-v2 78b5000.i2c: BUS ERROR:noisy bus/unexpected start/stop tag: msgs(n:2 cur:0 tx) bc(rx:1 tx:1) mode:FIFO slv_addr:0x30 MSTR_STS:0x041121c4 OPER:0x00000010
+[    4.642727] mmc3416x 1-0030: read reg 6 failed.(-3)
+[    4.647501] mmc3416x 1-0030: Check device failed
+[    4.652319] mmc3416x: probe of 1-0030 failed with error -3
+[    4.657749] i2c-core: driver [bma2x2-accel] using legacy suspend method
+[    4.664207] i2c-core: driver [bma2x2-accel] using legacy resume method
+[    4.670942] stk3x1x_probe: driver version = 3.4.4ts
+[    4.675612] of_get_named_gpiod_flags: parsed 'stk,irq-gpio' property of node '/soc/i2c@78b5000/stk@48[0]' - status (0)
+[    4.675634] stk_ps 1-0048: stk3x1x_probe: stk3x1x_parse_dt ret=0
+[    4.681925] input: light as /devices/soc/78b5000.i2c/i2c-1/1-0048/input/input1
+[    4.689344] input: proximity as /devices/soc/78b5000.i2c/i2c-1/1-0048/input/input2
+[    4.698817] qcom,qpnp-rtc qpnp-rtc-6: rtc core: registered qpnp_rtc as rtc0
+[    4.705077] i2c /dev entries driver
+[    4.717402] /soc/qcom,cam_smmu/msm_cam_smmu_cb1: could not get #iommu-cells for /soc/qcom,iommu@1e00000
+[    4.729597] msm_camera_get_dt_vreg_data:1198 number of entries is 0 or not present in dts
+[    4.738498] msm_camera_get_dt_vreg_data:1198 number of entries is 0 or not present in dts
+[    4.746736] msm_camera_get_dt_vreg_data:1198 number of entries is 0 or not present in dts
+[    4.755859] msm_actuator_i2c_probe:1908 msm_actuator_i2c_probe: succeeded
+[    4.763341] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,eeprom@6c[0]' - status (0)
+[    4.763403] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,eeprom@6c[1]' - status (0)
+[    4.763480] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,eeprom@6c[2]' - status (0)
+[    4.763555] msm_eeprom_i2c_probe qcom,i2c-freq-mode read fail. Setting to 0 -22
+[    4.770476] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-006c
+[    4.780100] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-006c) status -22
+[    4.786578] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[    4.797539] qcom,eeprom 3-006c: Error applying setting, reverse things back
+[    4.804483] msm_camera_power_up:1537 cannot set pin to active state
+[    4.841595] i2c-msm-v2 78b7000.i2c: msm_bus_scale_register_client(mstr-id:86):0xb (ok)
+[    5.350112] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[    5.350112] : msgs(n:1 cur:0 tx) bc(rx:0 tx:3) mode:FIFO slv_addr:0x36 MSTR_STS:0x00132100 OPER:0x00000090
+[    5.470066] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[    5.475901] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[    5.573922] i2c-msm-v2 78b[   56.794105] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=85,chip->prev_voltage_based_soc=8
+7000.i2c: Bus recovery fail after 10 retries
+[    5.590091] rea[   56.807180] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=9
+d_eeprom_memory: page write failed
+[    5.593753] msm_eeprom_i2c_probe read_eeprom_memory failed
+[    5.629573] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-006c
+[    5.638821] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-006c) status -22
+[    5.645329] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[    5.656265] qcom,eeprom 3-006c: Error applying setting, reverse things back
+[    5.663207] msm_camera_power_down:1827 cannot set pin to suspend state
+[    5.669609] qcom,eeprom: probe of 3-006c failed with error -110
+[    5.677730] LED trigger flashlight-trigger failed to register (-17)
+[    5.683015] msm_led_flash_create_v4lsubdev:79 Enter
+[    5.688190] msm_led_flash_create_v4lsubdev:107 probe success
+[    5.694698] adp1660 i2c_add_driver success
+[    5.700611] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@0[0]' - status (0)
+[    5.700680] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@0[1]' - status (0)
+[    5.700756] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@0[2]' - status (0)
+[    5.700853] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@0[3]' - status (0)
+[    5.700968] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@0[4]' - status (0)
+[    5.701104] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@0[5]' - status (0)
+[    5.701259] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@0[6]' - status (0)
+[    5.701958] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@1[0]' - status (0)
+[    5.702017] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@1[1]' - status (0)
+[    5.702093] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/i2c@78b7000/qcom,camera@1[2]' - status (0)
+[    5.706806] BMS: bms_get_adc: vadc not found - defer probe rc=-517
+[    5.712012] BMS: qpnp_vm_bms_probe: Failed to get adc rc=-517
+[    5.717975] CHG: qpnp_lbc_main_probe: Failed to read DT properties rc=-517
+[    5.725764] unable to find DT imem DLOAD mode node
+[    5.730127] unable to find DT imem EDLOAD mode node
+[    5.734866] unable to find DT imem dload-type node
+[    5.741487] thermal thermal_zone0: failed to read out thermal zone 0
+[    5.747364] thermal thermal_zone1: failed to read out thermal zone 1
+[    5.753697] thermal thermal_zone2: failed to read out thermal zone 2
+[    5.765572] device-mapper: ioctl: 4.28.0-ioctl (2014-09-17) initialised: dm-devel@redhat.com
+[    5.773271] device-mapper: req-crypt: dm-req-crypt successfully initalized.
+[    5.773271]
+[    5.782998] sdhci: Secure Digital Host Controller Interface driver
+[    5.788138] sdhci: Copyright(c) Pierre Ossman
+[    5.792527] sdhci-pltfm: SDHCI platform and OF driver helper
+[    5.800754] sdhci_msm 7824900.sdhci: sdhci_msm_probe: ICE device is not enabled
+[    5.801175] usbcore: registered new interface driver usbhid
+[    5.801177] usbhid: USB HID core driver
+[    5.802911] ashmem: initialized
+[    5.819556] of_get_named_gpiod_flags: can't parse 'cd-gpios' property of node '/soc/sdhci@7824000[0]'
+[    5.820383] sdhci_msm 7824900.sdhci: sdhci_msm_pm_qos_parse: PM QoS voting for cpu group will be disabled
+[    5.833690] sdhci_msm 7824900.sdhci: No vmmc regulator found
+[    5.838315] sdhci_msm 7824900.sdhci: No vqmmc regulator found
+[    5.844763] mmc0: SDHCI controller on 7824900.sdhci [7824900.sdhci] using 32-bit ADMA in legacy mode
+[    5.884110] sdhci_msm 7864900.sdhci: sdhci_msm_probe: ICE device is not enabled
+[    5.890522] of_get_named_gpiod_flags: parsed 'cd-gpios' property of node '/soc/sdhci@07864000[0]' - status (0)
+[    5.891186] sdhci_msm 7864900.sdhci: sdhci_msm_pm_qos_parse: PM QoS voting for cpu group will be disabled
+[    5.916085] sdhci_msm 7864900.sdhci: No vmmc regulator found
+[    5.920792] sdhci_msm 7864900.sdhci: No vqmmc regulator found
+[    5.927101] mmc1: SDHCI controller on 7864900.sdhci [7864900.sdhci] using 32-bit ADMA in legacy mode
+[    5.933818] mmc0: Out-of-interrupt timeout is 100[ms]
+[    5.933822] mmc0: BKOPS_EN equals 0x2
+[    5.933827] mmc0: eMMC FW version: 0x09
+[    5.933830] mmc0: CMDQ supported: depth: 16
+[    5.933833] mmc0: cache barrier support 0 flush policy 0
+[    5.942424] mmc0: new HS200 MMC card at address 0001
+[    5.943091] mmc0: -524: cmdq: unable to set-up
+[    5.944502] mmcblk0: mmc0:0001 FN62BB 7.28 GiB
+[    5.944829] mmcblk0rpmb: mmc0:0001 FN62BB partition 3 512 KiB
+[    5.977750]  mmcblk0: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 p18 p19 p20 p21 p22 p23 p24 p25 p26 p27 p28 p29 p30 p31 p32 p33 p34 p35 p36
+[    6.006728] tz_log 8600720.tz-log: Hyp log service is not supported
+[    6.032679] bimc-bwmon 408000.qcom,cpu-bwmon: BW HWmon governor registered.
+[    6.042113] devfreq soc:qcom,cpubw: Couldn't update frequency transition information.
+[    6.050186] probe: Version mismatch expected 0x20000 got 0x0
+[    6.055522] coresight-fuse 5e01c.fuse: Fuse initialized
+[    6.067731] coresight-csr 801000.csr: CSR initialized
+[    6.072984] coresight-tmc 826000.tmc: Byte Counter feature enabled
+[    6.078901] sps:BAM 0x00884000 is registered.
+[    6.082973] coresight-tmc 826000.tmc: TMC initialized
+[    6.088269] coresight-tmc 825000.tmc: TMC initialized
+[    6.096086] nidnt boot config: 0
+[    6.100699] coresight-tpiu 820000.tpiu: NIDnT on SDCARD only mode
+[    6.105959] coresight-tpiu 820000.tpiu: TPIU initialized
+[    6.113737] coresight-replicator 824000.replicator: REPLICATOR initialized
+[    6.120422] coresight-dbgui 86d000.dbgui: DebugUI capture enabled
+[    6.125899] coresight-dbgui 86d000.dbgui: DebugUI initializaed
+[    6.132741] coresight-stm 802000.stm: STM initialized
+[    6.137590] coresight-hwevent 86c000.hwevent: Hardware Event driver initialized
+[    6.145384] coresight-etm 84c000.etm: ETM initialized
+[    6.149959] coresight-etm 84d000.etm: ETM initialized
+[    6.155103] coresight-etm 84e000.etm: ETM initialized
+[    6.160083] coresight-etm 84f000.etm: ETM initialized
+[    6.165861] coresight-remote-etm soc:rpm_etm0: Remote ETM initialized
+[    6.171738] coresight-remote-etm soc:wcn_etm0: Remote ETM initialized
+[    6.178116] coresight-remote-etm soc:modem_etm0: Remote ETM initialized
+[    6.185333] of_get_named_gpiod_flags: can't parse 'qcom,pmic-carddetect-gpio' property of node '/soc/qpdi@1941000[0]'
+[    6.185349] coresight-qpdi 1941000.qpdi: QPDI hotplug card detection is not supported
+[    6.192329] coresight-qpdi 1941000.qpdi: CoreSight QPDI driver initialized
+[    6.200848] usbcore: registered new interface driver snd-usb-audio
+[    6.231201] msm-pcm-lpa soc:qcom,msm-pcm-lpa: msm_pcm_probe: dev name soc:qcom,msm-pcm-lpa
+[    6.251381] u32 classifier
+[    6.253050]     Actions configured
+[    6.256482] Netfilter messages via NETLINK v0.30.
+[    6.261287] nf_conntrack version 0.5.0 (13826 buckets, 55304 max)
+[    6.268432] ctnetlink v0.93: registering with nfnetlink.
+[    6.274884] xt_time: kernel timezone is -0000
+[    6.278767] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    6.283933] arp_tables: (C) 2002 David S. Miller
+[    6.288258] TCP: cubic registered
+[    6.291440] Initializing XFRM netlink socket
+[    6.297214] NET: Registered protocol family 10
+[    6.303010] mip6: Mobile IPv6
+[    6.304985] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    6.310809] sit: IPv6 over IPv4 tunneling driver
+[    6.315873] NET: Registered protocol family 17
+[    6.319390] NET: Registered protocol family 15
+[    6.323908] bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+[    6.336427] Bridge firewalling registered
+[    6.340389] Ebtables v2.0 registered
+[    6.344413] Bluetooth: ed619eb8
+[    6.346887] Bluetooth: ed619eb8Bluetooth: ed619ec8
+[    6.351749] Bluetooth: ed619ea0Bluetooth: ed619ea0
+[    6.356430] Bluetooth: ed619e98Bluetooth: ed619ed8
+[    6.361232] Bluetooth: ed619ed8<6>[    6.364372] l2tp_core: L2TP core driver, V2.0
+[    6.368678] l2tp_ppp: PPPoL2TP kernel driver, V2.0
+[    6.373462] l2tp_ip: L2TP IP encapsulation support (L2TPv3)
+[    6.379047] l2tp_netlink: L2TP netlink interface
+[    6.383656] l2tp_eth: L2TP ethernet pseudowire support (L2TPv3)
+[    6.389560] l2tp_debugfs: L2TP debugfs support
+[    6.393971] l2tp_ip6: L2TP IP encapsulation support for IPv6 (L2TPv3)
+[    6.401390] NET: Registered protocol family 27
+[    6.408024] gpiochip_find_base: found new base at 797
+[    6.408280] gpiochip_add: registered GPIOs 797 to 828 on device: slave-kernel
+[    6.408777] gpiochip_find_base: found new base at 765
+[    6.408960] gpiochip_add: registered GPIOs 765 to 796 on device: master-kernel
+[    6.409104] gpiochip_find_base: found new base at 733
+[    6.409280] gpiochip_add: registered GPIOs 733 to 764 on device: slave-kernel
+[    6.409723] gpiochip_find_base: found new base at 701
+[    6.409924] gpiochip_add: registered GPIOs 701 to 732 on device: master-kernel
+[    6.410466] of_get_named_gpiod_flags: parsed 'qcom,gpio-proxy-unvote' property of node '/soc/qcom,pronto@a21b000[0]' - status (0)
+[    6.410899] subsys-pil-tz a21b000.qcom,pronto: for wcnss segments only will be dumped.
+[    6.418552] of_get_named_gpiod_flags: parsed 'qcom,gpio-err-fatal' property of node '/soc/qcom,pronto@a21b000[0]' - status (0)
+[    6.418572] of_get_named_gpiod_flags: parsed 'qcom,gpio-err-ready' property of node '/soc/qcom,pronto@a21b000[0]' - status (0)
+[    6.418589] of_get_named_gpiod_flags: parsed 'qcom,gpio-stop-ack' property of node '/soc/qcom,pronto@a21b000[0]' - status (0)
+[    6.418607] of_get_named_gpiod_flags: parsed 'qcom,gpio-force-stop' property of node '/soc/qcom,pronto@a21b000[0]' - status (0)
+[    6.420358] pil-q6v5-mss 4080000.qcom,mss: Failed to find the pas_id.
+[    6.425790] of_get_named_gpiod_flags: parsed 'qcom,gpio-proxy-unvote' property of node '/soc/qcom,mss@4080000[0]' - status (0)
+[    6.426604] of_get_named_gpiod_flags: parsed 'qcom,gpio-err-fatal' property of node '/soc/qcom,mss@4080000[0]' - status (0)
+[    6.426625] of_get_named_gpiod_flags: parsed 'qcom,gpio-err-ready' property of node '/soc/qcom,mss@4080000[0]' - status (0)
+[    6.426643] of_get_named_gpiod_flags: parsed 'qcom,gpio-stop-ack' property of node '/soc/qcom,mss@4080000[0]' - status (0)
+[    6.426661] of_get_named_gpiod_flags: parsed 'qcom,gpio-force-stop' property of node '/soc/qcom,mss@4080000[0]' - status (0)
+[    6.427068] pil-q6v5-mss 4080000.qcom,mss: for modem segments only will be dumped.
+[    6.449996] of_batterydata_read_data: palladium_1500mah loaded
+[    6.466719] BMS: bms_load_hw_defaults: BMS_EN=1 Sample_Interval-S1=[100]S2=[70]  Sample_Count-S1=[256]S2=[128] Fifo_Length-S1=[5]S2=[5] FSM_state=2
+[    6.486939] BMS: calculate_initial_soc: warm_reset=0 est_ocv=0  shutdown_soc_invalid=1 shutdown_ocv=65535 shutdown_soc=255 last_soc=-22 calculated_soc=0 last_ocv_uv=3207370
+[    6.501357] BMS: calculate_initial_aging_comp: Clearing aging data battery_removed=0 shutdown_soc_invalid=1
+[    6.520365] BMS: qpnp_vm_bms_probe: probe success: soc=0 vbatt=4193111 ocv=3207370 warm_reset=0
+[    6.530709] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=0,chip->prev_voltage_based_soc=0
+[    6.541235] msm_otg 78d9000.usb: phy_reset: success
+[    6.544867] CHG: qpnp_lbc_main_probe: Probe chg_dis=0 bpd=1 usb=1 batt_pres=1 batt_volt=4194286 soc=0
+[    6.566959] Registering SWP/SWPB emulation handler
+[    6.570948] Creating CPU group 0
+[    6.573926] Init CPU0 state
+[    6.576703] Init CPU1 state
+[    6.579481] Init CPU2 state
+[    6.582292] Init CPU3 state
+[    6.586654] Loading compiled-in X.509 certificates
+[    6.597315] Loaded X.509 cert 'Magrathea: Glacier signing key: 79bfb5bae5ca50586a2ac674eccf17d213c77ee5'
+[    6.605933] registered taskstats version 1
+[    6.611990] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,smp2pgpio_test_smp2p_15_in[0]' - status (0)
+[    6.612083] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,smp2pgpio_test_smp2p_15_out[0]' - status (0)
+[    6.612166] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,smp2pgpio_test_smp2p_1_in[0]' - status (0)
+[    6.612250] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,smp2pgpio_test_smp2p_1_out[0]' - status (0)
+[    6.612331] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,smp2pgpio_test_smp2p_4_in[0]' - status (0)
+[    6.612414] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,smp2pgpio_test_smp2p_4_out[0]' - status (0)
+[    6.619176] hyp_assign_table: Failed to assign memory protection, ret = -19
+[    6.625171] fastrpc: probe of soc:qcom,mdsprpc-mem failed with error -1
+[    6.635072] file system registered
+[    6.637624] mbim_init: initialize 1 instances
+[    6.642094] mbim_init: Initialized 1 ports
+[    6.650649] rndis_qc_init: initialize rndis QC instance
+[    6.655586] Number of LUNs=8
+[    6.657775] Mass Storage Function, version: 2009/09/11
+[    6.660541] msm_hsusb_host msm_hsusb_host: EHCI Host Controller
+[    6.660895] msm_hsusb_host msm_hsusb_host: new USB bus registered, assigned bus number 1
+[    6.663204] msm_hsusb_host msm_hsusb_host: irq 45, io mem 0x078d9000
+[    6.680131] msm_hsusb_host msm_hsusb_host: USB 2.0 started, EHCI 1.00
+[    6.680614] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    6.680622] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    6.680628] usb usb1: Product: EHCI Host Controller
+[    6.680634] usb usb1: Manufacturer: Linux 3.18.71 ehci_hcd
+[    6.680640] usb usb1: SerialNumber: msm_hsusb_host
+[    6.681785] hub 1-0:1.0: USB hub found
+[    6.681846] hub 1-0:1.0: 1 port detected
+[    6.726351] LUN: removable file: (no medium)
+[    6.730746] Number of LUNs=1
+[    6.733545] LUN: removable file: (no medium)
+[    6.737649] Number of LUNs=1
+[    6.741653] android_usb gadget: android_usb ready
+[    6.745327] msm_hsusb msm_hsusb: [ci13xxx_start] hw_ep_max = 16
+[    6.751289] msm_hsusb msm_hsusb: CI13XXX_CONTROLLER_UDC_STARTED_EVENT received
+[    6.760377] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/gpio_keys/camera_focus[0]' - status (0)
+[    6.760426] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/gpio_keys/camera_snapshot[0]' - status (0)
+[    6.760465] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/gpio_keys/vol_up[0]' - status (0)
+[    6.760504] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/gpio_keys/vol_down[0]' - status (0)
+[    6.760543] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/gpio_keys/home[0]' - status (0)
+[    6.760582] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/gpio_keys/menu[0]' - status (0)
+[    6.760621] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/gpio_keys/back[0]' - status (0)
+[    6.761080] msm8909-pinctrl 1000000.pinctrl: pin GPIO_11 already requested by 78ba000.spi; cannot claim for soc:gpio_keys
+[    6.771068] msm8909-pinctrl 1000000.pinctrl: pin-11 (soc:gpio_keys) status -22
+[    6.778204] msm8909-pinctrl 1000000.pinctrl: could not request pin 11 (GPIO_11) from group gpio11  on device 1000000.pinctrl
+[    6.789497] gpio-keys soc:gpio_keys: Error applying setting, reverse things back
+[    6.796858] input input3: cannot set ts pinctrl active state
+[    6.802512] gpio-keys soc:gpio_keys: cannot set ts pinctrl active state
+[    6.809114] gpio-keys: probe of soc:gpio_keys failed with error -22
+[    6.815882] qcom,qpnp-rtc qpnp-rtc-6: setting system clock to 1970-01-01 00:00:10 UTC (10)
+[    6.826087] /soc/qcom,lpm-levels/qcom,pm-cluster@0: No CPU phandle, assuming single cluster
+[    6.833480] calculate_residency: residency < 0 for LPM
+[    6.838520] parse_cpu_levels: idx 1 420
+[    6.842371] calculate_residency: residency < 0 for LPM
+[    6.847461] parse_cpu_levels: idx 2 500
+[    6.851304] parse_cpu_levels: idx 2 1373
+[    6.859820] of_get_named_gpiod_flags: parsed 'qcom,flash-en' property of node '/soc/flashlight[0]' - status (0)
+[    6.859875] of_get_named_gpiod_flags: parsed 'qcom,flash-now' property of node '/soc/flashlight[0]' - status (0)
+[    6.862654] ---+++ get pwm-freq prop failed
+[    6.865799] ---+++ get pwm-duty prop failed
+[    6.870196] ---+++ gpio_clk_probe succeeded
+[    6.878312] qcom,cc-debug-8909 1874000.qcom,cc-debug: Registered Debug Mux successfully
+[    6.888455] msm8952-asoc-wcd 7702000.sound: default codec configured
+[    6.893837] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[    6.893852] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[    6.897229] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[    6.904686] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[    6.912631] spk_vreg: disabling
+[    6.914992] clock_late_init: Removing enables held for handed-off clocks
+[    6.925246] ALSA device list:
+[    6.927182]   No soundcards found.
+[    6.935455] EXT4-fs (mmcblk0p21): couldn't mount as ext3 due to feature incompatibilities
+[    6.943504] EXT4-fs (mmcblk0p21): couldn't mount as ext2 due to feature incompatibilities
+[    6.952271] EXT4-fs (mmcblk0p21): INFO: recovery required on readonly filesystem
+[    6.958629] EXT4-fs (mmcblk0p21): write access will be enabled during recovery
+[    7.042386] EXT4-fs (mmcblk0p21): recovery complete
+[    7.047354] EXT4-fs (mmcblk0p21): mounted filesystem with ordered data mode. Opts: (null)
+[    7.054585] VFS: Mounted root (ext4 filesystem) readonly on device 179:21.
+[    7.062096] devtmpfs: mounted
+[    7.066284] Freeing unused kernel memory: 816K
+[    7.204561] systemd[1]: System time before build time, advancing clock.
+[    7.238166] systemd[1]: Failed to insert module 'autofs4': No such file or directory
+[    7.257272] modprobe (269) used greatest stack depth: 5928 bytes left
+[    7.273427] systemd[1]: systemd 234 running in system mode. (-PAM +AUDIT +SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS +ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD -IDN2 -IDN default-hierarchy=hybrid)
+[    7.293897] systemd[1]: Detected architecture arm.
+[    7.320956] systemd[1]: Set hostname to <msm8909>.
+[    7.328082] random: systemd urandom read with 14 bits of entropy available
+[    7.334038] systemd[1]: Initializing machine ID from random generator.
+[    7.340707] systemd[1]: Installed transient /etc/machine-id file.
+[    7.405678] systemd-fstab-g (272) used greatest stack depth: 5808 bytes left
+[    7.416273] systemd-rc-loca (276) used greatest stack depth: 5752 bytes left
+[    7.438215] systemd-sysv-ge (278) used greatest stack depth: 5624 bytes left
+[    7.528151] systemd-gpt-auto-generator[274]: Failed to dissect: Input/output error
+[    7.536657] systemd[270]: /lib/systemd/system-generators/systemd-gpt-auto-generator failed with error code 1.
+[    7.693321] systemd[1]: /etc/systemd/system/location_hal_daemon.service:31: Failed to add dependency on data.mount mount-data.service, ignoring: Invalid argument
+[    7.708132] systemd[1]: /etc/systemd/system/loc_launcher.service:9: Failed to add dependency on data.mount mount-data.service, ignoring: Invalid argument
+[    7.743299] systemd[1]: /lib/systemd/system/attfotademo.service:10: Unknown lvalue 'ExecstartPre' in section 'Service'
+[    7.851602] systemd[1]: Reached target Swap.
+[    7.876027] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[    7.900657] systemd[1]: Listening on /dev/initctl Compatibility Named Pipe.
+[    7.921874] systemd[1]: Created slice System Slice.
+[    7.941149] systemd[1]: Created slice system-getty.slice.
+[    7.961503] systemd[1]: Created slice User and Session Slice.
+[    7.980382] systemd[1]: Reached target Slices.
+[    8.000732] systemd[1]: Listening on Journal Socket.
+[    8.023658] systemd[1]: Starting SELinux autorelabel service loading...
+[    8.053708] systemd[1]: Starting Remount Root and Kernel File Systems...
+[    8.091761] systemd[1]: Started Quec_launcher.
+[    8.096732] selinux-autorel (283) used greatest stack depth: 5572 bytes left
+[    8.121902] systemd[1]: Started qlrild service.
+[    8.147632] systemd[1]: Mounting Kernel Configuration File System...
+[    8.174875] systemd[1]: Starting Apply Kernel Variables...
+[    8.204366] systemd[1]: Started irsc-util Service.
+[    8.225868] systemd[1]: Mounting Kernel Debug File System...
+[    8.251064] systemd[1]: Listening on udev Control Socket.
+[    8.274473] systemd[1]: Starting SELinux init for /dev service loading...
+[    8.300987] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[    8.320587] systemd[1]: Reached target Paths.
+[    8.341369] systemd[1]: Listening on Network Service Netlink Socket.
+[    8.364090] systemd[1]: Started sound manager.
+[    8.385369] systemd[1]: Mounting FUSE Control File System...
+[    8.410673] systemd[1]: Reached target Remote File Systems.
+[    8.435179] systemd[1]: Starting SELinux init service loading...
+[    8.460692] systemd[1]: Listening on udev Kernel Socket.
+[    8.484001] systemd[1]: Starting udev Coldplug all Devices...
+[    8.511492] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[    8.530767] systemd[1]: Listening on Journal Socket (/dev/log).
+[    8.555190] systemd[1]: Starting Journal Service...
+[    8.568141] systemd[1]: Started ql-power-manager.
+[    8.592065] systemd[1]: Started mdns_avs_stop.path.
+[    8.623040] systemd[1]: Mounted Kernel Debug File System.
+[    8.632565] devfreq soc:qcom,kgsl-busmon: Couldn't update frequency transition information.
+[    8.660600] systemd[1]: Mounted Kernel Configuration File System.
+[    8.680509] systemd[1]: Mounted FUSE Control File System.
+[    8.707936] systemd[1]: Started SELinux autorelabel service loading.
+[    8.947789] mdp3_iommu_disable: iommu ref count unbalanced for client 0
+[    8.981511] systemd[1]: Started Remount Root and Kernel File Systems.
+[    9.190206] usb 1-1: new high-speed USB device number 2 using msm_hsusb_host
+[    9.302053] systemd[1]: Started Apply Kernel Variables.
+[    9.350497] usb 1-1: New USB device found, idVendor=2c7c, idProduct=0121
+[    9.355273] systemd[1]: Started SELinux init for /dev service loading.
+[    9.362790] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[    9.362800] usb 1-1: Product: Android
+[    9.362806] usb 1-1: Manufacturer: Android
+[    9.364572] option 1-1:1.0: GSM modem (1-port) converter detected
+[    9.365243] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB0
+[    9.365963] option 1-1:1.1: GSM modem (1-port) converter detected
+[    9.366782] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB1
+[    9.367638] option 1-1:1.2: GSM modem (1-port) converter detected
+[    9.368133] msm8952-asoc-wcd 7702000.sound: default codec configured
+[    9.368149] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[    9.368157] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[    9.371751] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[    9.371805] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[    9.374861] msm8952-asoc-wcd 7702000.sound: default codec configured
+[    9.374877] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[    9.374885] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[    9.378414] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[    9.378469] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[    9.395160] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB2
+[    9.396167] option 1-1:1.3: GSM modem (1-port) converter detected
+[    9.399417] msm8952-asoc-wcd 7702000.sound: default codec configured
+[    9.399432] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[    9.399441] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[    9.402900] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[    9.402954] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[    9.403548] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB3
+[    9.405983] qmi_wwan_q 1-1:1.4: cdc-wdm0: USB WDM device
+[    9.407154] msm8952-asoc-wcd 7702000.sound: default codec configured
+[    9.407168] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[    9.407177] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[    9.408015] qmi_wwan_q 1-1:1.4: Quectel Android work on RawIP mode
+[    9.408993] qmi_wwan_q 1-1:1.4: rx_urb_size = 1520
+[    9.410300] qmi_wwan_q 1-1:1.4 wwan0: register 'qmi_wwan_q' at usb-msm_hsusb_host-1, WWAN/QMI device, eb745408
+[    9.410872] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[    9.410928] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[    9.415029] msm8952-asoc-wcd 7702000.sound: default codec configured
+[    9.415044] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[    9.415052] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[    9.418432] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[    9.418482] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[    9.593688] systemd[1]: Started SELinux init service loading.
+[    9.618519] systemd[1]: Started Journal Service.
+[    9.834703] systemd-tmpfile (341) used greatest stack depth: 5264 bytes left
+[    9.871030] systemd-journald[328]: Received request to flush runtime journal from PID 1
+[   11.543247] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=0,chip->prev_voltage_based_soc=0
+[   14.097138] EXT4-fs (mmcblk0p35): recovery complete
+[   14.101783] EXT4-fs (mmcblk0p35): mounted filesystem with ordered data mode. Opts: data=ordered,noauto_da_alloc,discard
+[   14.120773] EXT4-fs (mmcblk0p36): recovery complete
+[   14.125696] EXT4-fs (mmcblk0p36): mounted filesystem with ordered data mode. Opts: data=ordered,noauto_da_alloc,discard
+[   14.141736] EXT4-fs (mmcblk0p23): recovery complete
+[   14.146955] EXT4-fs (mmcblk0p23): mounted filesystem with ordered data mode. Opts: data=ordered,noauto_da_alloc,discard
+[   14.225047] EXT4-fs (mmcblk0p22): recovery complete
+[   14.230009] EXT4-fs (mmcblk0p22): mounted filesystem with ordered data mode. Opts: data=ordered,noauto_da_alloc,discard
+[   15.935125] Starting imud daemon:
+[   16.002871] wcnss_wlan triggered by userspace
+[   16.007236] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,wcnss-wlan@a000000[0]' - status (0)
+[   16.007323] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,wcnss-wlan@a000000[1]' - status (0)
+[   16.007425] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,wcnss-wlan@a000000[2]' - status (0)
+[   16.007544] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,wcnss-wlan@a000000[3]' - status (0)
+[   16.007671] of_get_named_gpiod_flags: parsed 'gpios' property of node '/soc/qcom,wcnss-wlan@a000000[4]' - status (0)
+[   16.007739] wcnss_pm_qos_add_request: add request
+[   16.014451] wcnss_pm_qos_update_request: update request 100
+[   16.020360] wcnss_trigger_config: couldn't get snoc_wcnss
+[   16.028104] Battery mvolts phy=4088033 meas=0x3e651d
+[   16.032193] wcnss_notif_cb: wcnss notification event: 2
+[   16.042032] subsys-pil-tz a21b000.qcom,pronto: wcnss: loading from 0x8d500000 to 0x8db4a000
+[   16.049518] wcnss_notif_cb: wcnss notification event: 6
+[   16.058583] wcnss: IRIS Reg: 04000004
+[   16.073202] Starting recovery-updater(root:disk) ...
+[   16.093146]
+[   16.093146] Started recovery-updater! pid - 1530 ...
+[   16.462911] subsys-pil-tz a21b000.qcom,pronto: wcnss: Brought out of reset
+[   16.563147] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=93,chip->prev_voltage_based_soc=0
+[   16.572921] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=1
+[   16.662181] Starting securemsm qseecomd daemon...:
+[   16.736731] msm_thermal:store_cc_enabled Core control disabled
+[   16.744926] msm_thermal:store_cc_enabled Core control enabled
+[   16.745218] done
+[   16.766637] subsys-restart: __subsystem_get(): Changing subsys fw_name to modem
+[   16.797190] pil-q6v5-mss 4080000.qcom,mss: modem: loading from 0x88000000 to 0x8d300000
+[   16.809585] subsys-pil-tz a21b000.qcom,pronto: wcnss: Power/Clock ready interrupt received
+[   16.820127] wcnss_notif_cb: wcnss notification event: 7
+[   16.827992] subsys-pil-tz a21b000.qcom,pronto: Subsystem error monitoring/handling services are up
+[   16.836221] wcnss_notif_cb: wcnss notification event: 3
+[   16.841323] wcnss_pm_qos_update_request: update request -1
+[   16.845558] msm8952-asoc-wcd 7702000.sound: default codec configured
+[   16.845574] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[   16.845583] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[   16.849085] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[   16.849139] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[   16.867630] diag: In diag_send_feature_mask_update, control channel is not open, p: 2, c167e154
+[   16.880668] wcnss_pm_qos_remove_request: remove request
+[   16.886229] set_wcnss_mode (1512) used greatest stack depth: 4788 bytes left
+[   16.933073] msm_thermal:vdd_rstr_apss_freq_dev_init APSS rail not initialized
+[   16.939212] msm_thermal:thermal_monitor_init vdd APSS mitigation device init failed
+[   16.939503] msm_thermal:set_enabled enabled = 0
+[   16.959402] wcnss_wlan_ctrl_probe: SMD ctrl channel up
+[   16.960193] pil-q6v5-mss 4080000.qcom,mss: Debug policy not present - msadp. Continue.
+[   16.963080] msm8952-asoc-wcd 7702000.sound: default codec configured
+[   16.963096] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[   16.963104] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[   16.966730] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[   16.966784] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[   16.994034] wcnss: version 01050102
+[   16.996527] msm8952-asoc-wcd 7702000.sound: default codec configured
+[   16.996544] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[   16.996553] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[   17.000329] msm8952-asoc-wcd 7702000.sound: ASoC: CODEC DAI cajon_vifeedback not registered
+[   17.000383] msm8952-asoc-wcd 7702000.sound: snd_soc_register_card failed (-517)
+[   17.012180] rmt_storage:INFO:main: 4 GPT partitions found
+[   17.012180]
+[   17.013124] rmt_storage:INFO:main: Done with init now waiting for messages!
+[   17.032863] wcnss: schedule dnld work for pronto
+[   17.037228] pil-q6v5-mss 4080000.qcom,mss: Loading MBA and DP (if present) from 0xbf000000 to 0xbf100000 size 100000
+[   17.047902] wcnss: build version 00147
+[   17.084384] pil-q6v5-mss 4080000.qcom,mss: MBA boot done
+[   17.160861] Stopping imud daemon:
+[   17.306958] adsp-loader soc:qcom,msm-adsp-loader: adsp_loader_do: scheduling work to load ADSP fw
+[   17.560749] capability: warning: `qseecomd' uses 32-bit capabilities (legacy support in use)
+[   17.922700] pil-q6v5-mss 4080000.qcom,mss: modem: Brought out of reset
+[   17.999503] pil-q6v5-mss 4080000.qcom,mss: modem: Power/Clock ready interrupt received
+[   17.999521] pil-q6v5-mss 4080000.qcom,mss: Subsystem error monitoring/handling services are up
+[   18.015294] M-Notify: General: 7
+[   18.025148] msm8952-asoc-wcd 7702000.sound: default codec configured
+[   18.030648] of_get_named_gpiod_flags: can't parse 'qcom,cdc-us-euro-gpios' property of node '/soc/sound[0]'
+[   18.030668] of_get_named_gpiod_flags: can't parse 'qcom,msm-spk-ext-pa' property of node '/soc/sound[0]'
+[   18.102626] EXT4-fs (mmcblk0p21): re-mounted. Opts: data=ordered
+[   18.133309] sysmon-qmi: sysmon_clnt_svc_arrive: Connection established between QMI handle and modem's SSCTL service
+[   18.139800] rmt_storage:INFO:rmt_storage_alloc_buff_cb: Received req_size: 0! avail: 917504
+[   18.139815] rmt_storage:INFO:rmt_storage_alloc_buff_cb: New client making a dummy request with buffer req size 0
+[   18.174937] Starting location_hal_initializer
+[   18.193139] QTI:Netlink Query to Kernel Success
+[   18.276361] diag: In diag_send_feature_mask_update, control channel is not open, p: 0, c167e064
+[   18.291749] apr_tal:Modem Is Up
+[   18.568921] hyp_assign_table: Failed to assign memory protection, ret = -19
+[   18.576142] memshare: hyp_assign_phys failed size=2097152 err=-19
+[   18.597149] sps:BAM 0x04044000 is registered.
+[   18.610559] sps:BAM 0x04044000 (va:0xc7b00000) enabled: ver:0x25, number of pipes:6
+[   18.644194] wcd-spmi-core msm8x16_wcd_codec-12: ASoC: mux RX3 MIX1 INP3 has no paths
+[   18.653492] wcd-spmi-core msm8x16_wcd_codec-12: ASoC: mux RX2 MIX1 INP3 has no paths
+[   18.711066] msm_pm_qos_add_request: add request
+[   18.748516] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   18.760934] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   18.792081] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   18.802742] camera 3-0002: Error applying setting, reverse things back
+[   18.851285] msm_camera_power_up:1537 cannot set pin to active state
+[   19.409975] input: msm8909-snd-card Headset Jack as /devices/soc/7702000.sound/sound/card0/input4
+[   19.420186] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   19.420186] : msgs(n:2 cur:0 tx) bc(rx:2 tx:2) mode:FIFO slv_addr:0x2d MSTR_STS:0x00132100 OPER:0x00000010
+[   19.431042] input: msm8909-snd-card Button Jack as /devices/soc/7702000.sound/sound/card0/input5
+[   19.487742] QCMAP:Start Main
+[   19.558329] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   19.564247] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   19.600173] wcnss: NV download
+[   19.608449] wcnss: NV bin size: 31719, total_fragments: 11
+[   19.613358] wcnss: no space available for smd frame
+[   19.640205] wcnss: no space available for smd frame
+[   19.659344] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   19.665568] msm_sensor_match_id: s5k4h7: read id failed
+[   19.670238] wcnss: no space available for smd frame
+[   19.678786] msm_sensor_check_id:1401 match id failed rc -110
+[   19.700188] wcnss: no space available for smd frame
+[   19.708491] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   19.720023] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   19.726010] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   19.795909] QTI:Netlink Query to Kernel Success
+[   19.800384] camera 3-0002: Error applying setting, reverse things back
+[   19.823490] msm_camera_power_down:1827 cannot set pin to suspend state
+[   19.831622] QCMAP:Start DHCP server
+[   19.851077] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   19.861053] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   19.867873] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   19.880374] camera 3-0002: Error applying setting, reverse things back
+[   19.888247] msm_camera_power_up:1537 cannot set pin to active state
+[   20.238115] QCMAP:DHCP server started
+[   20.269662] msm_qti_pp_get_rms_value_control, back not active to query rms be_idx:3
+[   20.283867] msm_voice_sound_focus_get: Error getting Sound Focus Params, err=-22
+[   20.290781] msm_voice_source_tracking_get: Error getting Source Tracking Params, err=-22
+[   20.298640] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   20.304733] msm_audio_sound_focus_get: Could not get copp idx for port_id=16385
+[   20.312330] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   20.318277] msm_audio_source_tracking_get: Could not get copp idx for port_id=16385
+[   20.326307] msm_voice_sound_focus_get: Error getting Sound Focus Params, err=-22
+[   20.333785] msm_voice_source_tracking_get: Error getting Source Tracking Params, err=-22
+[   20.341740] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   20.347703] msm_audio_sound_focus_get: Could not get copp idx for port_id=4101
+[   20.355285] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   20.361317] msm_audio_source_tracking_get: Could not get copp idx for port_id=4101
+[   20.370568] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   20.375905] msm_audio_sound_focus_get: Could not get copp idx for port_id=4103
+[   20.383609] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   20.389488] msm_audio_source_tracking_get: Could not get copp idx for port_id=4103
+[   20.397421] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   20.403441] msm_audio_sound_focus_get: Could not get copp idx for port_id=36865
+[   20.411026] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   20.416964] msm_audio_source_tracking_get: Could not get copp idx for port_id=36865
+[   20.425381] core_get_license_status: cmdrsp_license_result.result = 0x15 for module 0x131ff
+[   20.436262] msm_pcm_volume_ctl_get substream runtime not found
+[   20.441197] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   20.441197] : msgs(n:2 cur:0 tx) bc(rx:2 tx:2) mode:FIFO slv_addr:0x2d MSTR_STS:0x08132100 OPER:0x00000010
+[   20.445468] msm_pcm_volume_ctl_get substream runtime not found
+[   20.446169] msm_pcm_volume_ctl_get substream runtime not found
+[   20.446495] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.448045] msm_pcm_volume_ctl_get substream runtime not found
+[   20.448653] msm_pcm_volume_ctl_get substream runtime not found
+[   20.448728] msm_pcm_volume_ctl_get substream or runtime not found
+[   20.449593] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.450528] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.451250] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.451829] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.452445] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.453018] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.453700] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.454332] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.454845] msm_pcm_volume_ctl_get substream or runtime not found
+[   20.455215] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.455803] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.456476] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.457142] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.457764] msm_compr_audio_effects_config_get: stream or effects inactive
+[   20.558511] device bridge0 entered promiscuous mode
+[   20.700183] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   20.706038] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   20.717387] wcdcal_hwdep_ioctl_shared: codec didn't set this 0!!
+[   20.724867] wcdcal_hwdep_ioctl_shared: codec didn't set this 3!!
+[   20.745390] core_get_license_status: cmdrsp_license_result.result = 0x15 for module 0x131ff
+[   20.753217] core_set_license: Invalid cal block to send
+[   20.798346] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   20.804299] msm_sensor_match_id: s5k4h7: read id failed
+[   20.809224] msm_sensor_check_id:1401 match id failed rc -110
+[   20.834477] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   20.843871] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   20.850400] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   20.863429] camera 3-0002: Error applying setting, reverse things back
+[   20.868940] msm_camera_power_down:1827 cannot set pin to suspend state
+[   20.901155] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   20.910751] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   20.917087] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   20.928296] camera 3-0002: Error applying setting, reverse things back
+[   20.934616] msm_camera_power_up:1537 cannot set pin to active state
+[   21.027945] random: nonblocking pool is initialized
+[   21.188817] msm_qti_pp_get_rms_value_control, back not active to query rms be_idx:3
+[   21.202478] msm_voice_sound_focus_get: Error getting Sound Focus Params, err=-22
+[   21.209184] msm_voice_source_tracking_get: Error getting Source Tracking Params, err=-22
+[   21.217317] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.223400] msm_audio_sound_focus_get: Could not get copp idx for port_id=16385
+[   21.230977] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.236895] msm_audio_source_tracking_get: Could not get copp idx for port_id=16385
+[   21.244937] msm_voice_sound_focus_get: Error getting Sound Focus Params, err=-22
+[   21.252336] msm_voice_source_tracking_get: Error getting Source Tracking Params, err=-22
+[   21.260578] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.266318] msm_audio_sound_focus_get: Could not get copp idx for port_id=4101
+[   21.274037] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.279852] msm_audio_source_tracking_get: Could not get copp idx for port_id=4101
+[   21.288071] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.293862] msm_audio_sound_focus_get: Could not get copp idx for port_id=4103
+[   21.301483] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.307282] msm_audio_source_tracking_get: Could not get copp idx for port_id=4103
+[   21.315192] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.321304] msm_audio_sound_focus_get: Could not get copp idx for port_id=36865
+[   21.328949] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.334888] msm_audio_source_tracking_get: Could not get copp idx for port_id=36865
+[   21.344969] core_get_license_status: cmdrsp_license_result.result = 0x15 for module 0x131ff
+[   21.347308] QCMAP:GSB disabled
+[   21.357671] msm_pcm_volume_ctl_get substream runtime not found
+[   21.364019] msm_pcm_volume_ctl_get substream runtime not found
+[   21.370274] msm_pcm_volume_ctl_get substream runtime not found
+[   21.375562] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.384205] msm_pcm_volume_ctl_get substream runtime not found
+[   21.390523] msm_pcm_volume_ctl_get substream runtime not found
+[   21.395626] msm_pcm_volume_ctl_get substream or runtime not found
+[   21.403342] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.410797] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.417944] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.425426] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.432898] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.440711] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.447832] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.455395] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.462804] msm_pcm_volume_ctl_get substream or runtime not found
+[   21.464045] QCMAP:Init Complete
+[   21.471122] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   21.471122] : msgs(n:2 cur:0 tx) bc(rx:2 tx:2) mode:FIFO slv_addr:0x2d MSTR_STS:0x08132100 OPER:0x00000010
+[   21.479645] QTI:Netlink Query to Kernel Success
+[   21.480851] QCMAP:Enable mobileap
+[   21.499908] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.507590] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.515113] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.539473] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.555080] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.593127] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=93,chip->prev_voltage_based_soc=1
+[   21.601895] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=2
+[   21.630133] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   21.635999] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   21.675566] aprv2_core_fn_q: Received ADSP version as 2.8
+[   21.683386] q6asm_callback: cmd = 0x10da1 returned error = 0x3
+[   21.688283] q6asm_send_cal: DSP returned error[3] audio audstrm cal send
+[   21.709414] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   21.715419] msm_sensor_match_id: s5k4h7: read id failed
+[   21.720366] msm_sensor_check_id:1401 match id failed rc -110
+[   21.729438] adm_callback: cmd = 0x10328 returned error = 0x3
+[   21.734128] send_adm_cal_block: DSP returned error[ADSP_EUNSUPPORTED]
+[   21.740989] afe_send_custom_topology_block: AFE SVC cal has invalid size: 0!
+[   21.747529] afe_send_custom_topology: No cal sent for cal_index 7! ret -22
+[   21.751206] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   21.751216] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   21.751225] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   21.751232] camera 3-0002: Error applying setting, reverse things back
+[   21.780158] msm_camera_power_down:1827 cannot set pin to suspend state
+[   21.780172] s5k4h7 power up failed
+[   21.780172] MSM-SENSOR-INIT msm_sensor_driver_cmd:82 msm_sensor_driver_cmd failed (non-fatal) rc -110
+[   21.808363] msm_camera_config_single_vreg : can't find sub reg name
+[   21.808364] afe_get_cal_topology_id: [AFE_TOPOLOGY_CAL] not initialized for this port 4096
+[   22.003580] QCMAP:Enable mobileap done
+[   22.330324] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   22.330324] : msgs(n:2 cur:0 tx) bc(rx:2 tx:1) mode:FIFO slv_addr:0x37 MSTR_STS:0x08132100 OPER:0x00000010
+[   22.460111] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   22.465960] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   22.540356] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   22.546450] msm_sensor_match_id: gc2385: read id failed
+[   22.551209] msm_sensor_check_id:1401 match id failed rc -110
+[   22.570338] msm_camera_config_single_vreg : can't find sub reg name
+[   22.605262] msm_camera_config_single_vreg : can't find sub reg namehcismd_set_enable 0
+[   22.805050] Bluetooth: e2bd5e80Bluetooth: e2bd5e80
+[   22.809586] Bluetooth: eb59bec0Bluetooth: e2bd5ec8
+[   22.890969] Bluetooth: ed62de80Bluetooth: e2281cc8
+[   22.895498] Bluetooth: e2281ec8Bluetooth: c1401de0
+[   22.901548] Bluetooth: ed62de80Bluetooth: c1401e48
+[   22.906309] Bluetooth: c1401de0Bluetooth: e2281c60
+[   22.910664] Bluetooth: e2281d68Bluetooth: e2281ec8
+[   22.915269] Bluetooth: e2281d00Bluetooth: ed62de80
+[   22.920386] Bluetooth: e2bd5ec8Bluetooth: e2bd5ec8
+[   22.924696] Bluetooth: e2bd5ec8Bluetooth: e2bd5ec8
+[   22.929500] Bluetooth: e2bd5ec8Bluetooth: e2bd5ec8
+[   22.934413] Bluetooth: e2bd5ec8Bluetooth: c1401de0
+[   22.939442] Bluetooth: c1401de0Bluetooth: eb763d08
+[   22.944356] Bluetooth: c1401de0Bluetooth: e2281d40
+[   22.949138] Bluetooth: e2281d10Bluetooth: e2281ec8
+[   22.953923] Bluetooth: e2281d70Bluetooth: e2bd5ec8
+[   22.958740] Bluetooth: c1401e70Bluetooth: e2bd5ec8
+[   22.962909] Bluetooth: e2bd5ec8Bluetooth: c1401de0
+[   23.079244] Bluetooth: de1bfd90<3>[   23.150242] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   23.150242] : msgs(n:2 cur:0 tx) bc(rx:2 tx:1) mode:FIFO slv_addr:0x37 MSTR_STS:0x08132100 OPER:0x00000010
+[   23.280100] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   23.285954] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   23.325838] Switching to composition number 0x9091
+[   23.359258] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   23.365726] msm_sensor_match_id: gc2385: read id failed
+[   23.377983] msm_sensor_check_id:1401 match id failed rc -110
+[   23.390569] enable_store: android_usb: already disabled
+[   23.400817] msm_camera_config_single_vreg : can't find sub reg name
+[   23.419293] Starting adbd:  msm_camera_config_single_vreg : can't find sub reg name
+[   23.507686] QCMAP:Enable mobileap
+[   23.507807] read descriptors
+[   23.507823] read strings
+[   23.914580] QCMAP:Enable mobileap done
+[   23.980457] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   23.980457] : msgs(n:2 cur:0 tx) bc(rx:2 tx:1) mode:FIFO slv_addr:0x37 MSTR_STS:0x08132100 OPER:0x00000010
+[   24.100147] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   24.106009] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   24.170421] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   24.176810] msm_sensor_match_id: gc2385: read id failed
+[   24.181847] msm_sensor_check_id:1401 match id failed rc -110
+[   24.199976] msm_camera_config_single_vreg : can't find sub reg name
+[   24.230285] gc2385 power up failed<3>[   24.232666] MSM-SENSOR-INIT msm_sensor_driver_cmd:82 msm_sensor_driver_cmd failed (non-fatal) rc -110
+[   24.248317] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   24.257654] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   24.264159] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   24.275167] camera 3-0002: Error applying setting, reverse things back
+[   24.281605] msm_camera_power_up:1537 cannot set pin to active state
+[   24.820319] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   24.820319] : m[   61.564911] send_filled_buffers_to_user: 15 callbacks suppressed
+[   61.576579] send_filled_buffers_to_user: Send Failed -3 drop_count = 125
+sgs(n:2 cur:0 tx) bc(rx:2 tx:2) mode:FIFO slv_addr:0x20 MSTR_STS:0x08132100 OPER:0x00000010
+[   24.940123] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   24.946095] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   25.019343] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   25.025319] msm_sensor_match_id: hi843_8909: read id failed
+[   25.030726] msm_sensor_check_id:1401 match id failed rc -110
+[   25.054885] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   25.064199] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   25.068592] hcismd_set_enable 1
+[   25.073771] Bluetooth: de581ef0
+[   25.073772] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   25.087980] camera 3-0002: Error applying setting, reverse things back
+[   25.094490] msm_camera_power_down:1827 cannot set pin to suspend state
+[   25.131099] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   25.143220] Bluetooth: e2281c10
+[   25.145336] Bluetooth: ebff7eb0
+[   25.146240] Bluetooth: ebff7eb0
+[   25.146241] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   25.146252] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   25.146260] camera 3-0002: Error applying setting, reverse things back
+[   25.436000] msm_camera_power_up:1537 cannot set pin to active state
+[   25.436001] QCMAP:Enable mobileap
+[   25.710166] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   25.710166] : msgs(n:2 cur:0 tx) bc(rx:2 tx:2) mode:FIFO slv_addr:0x20 MSTR_STS:0x08132100 OPER:0x00000010
+[   25.830104] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   25.835968] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   25.842805] QCMAP:Enable mobileap done
+[   25.918693] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   25.924484] msm_sensor_match_id: hi843_8909: read id failed
+[   25.929750] msm_sensor_check_id:1401 match id failed rc -110
+[   25.954695] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   25.964017] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   25.970526] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   25.981496] camera 3-0002: Error applying setting, reverse things back
+[   25.988066] msm_camera_power_down:1827 cannot set pin to suspend state
+[   26.021118] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.[   61.834051] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=85,chip->prev_voltage_based_soc=9
+spi; cannot claim for 3-0002
+[   26.030573] msm8909-pinctrl 100[   61.847499] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=10
+0000.pinctrl: pin-9 (3-0002) status -22
+[   26.042159] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   26.052153] camera 3-0002: Error applying setting, reverse things back
+[   26.058603] msm_camera_power_up:1537 cannot set pin to active state
+[   26.117265] Starting WLAN... start
+[   26.600289] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   26.600289] : msgs(n:2 cur:0 tx) bc(rx:2 tx:2) mode:FIFO slv_addr:0x20 MSTR_STS:0x08132100 OPER:0x00000010
+[   26.623048] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=93,chip->prev_voltage_based_soc=2
+[   26.631632] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=3
+[   26.720085] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   26.725950] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   26.800236] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   26.805843] msm_sensor_match_id: hi843_8909: read id failed
+[   26.813631] msm_sensor_check_id:1401 match id failed rc -110
+[   26.837055] msm8909-pinctrl 1000000.pinctrl: pin GPIO_9 already requested by 78ba000.spi; cannot claim for 3-0002
+[   26.846767] msm8909-pinctrl 1000000.pinctrl: pin-9 (3-0002) status -22
+[   26.853244] msm8909-pinctrl 1000000.pinctrl: could not request pin 9 (GPIO_9) from group gpio9  on device 1000000.pinctrl
+[   26.865584] camera 3-0002: Error applying setting, reverse things back
+[   26.871394] msm_camera_power_down:1827 cannot set pin to suspend state
+[   26.900388] hi843_8909 power up failed<3>[   26.903129] MSM-SENSOR-INIT msm_sensor_driver_cmd:82 msm_sensor_driver_cmd failed (non-fatal) rc -110
+[   26.918525] wlan: loading driver v3.0.11.85
+[   27.345462] msm_camera_config_single_vreg : can't find sub reg name
+[   27.345463] QCMAP:Enable mobileap
+[   27.460246] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   27.460246] : msgs(n:2 cur:0 tx) bc(rx:2 tx:1) mode:FIFO slv_addr:0x30 MSTR_STS:0x08132100 OPER:0x00000010
+[   27.580103] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   27.585966] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   27.659364] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   27.665051] msm_sensor_match_id: hi259: read id failed
+[   27.669993] msm_sensor_check_id:1401 match id failed rc -110
+[   27.693108] msm_camera_config_single_vreg : can't find sub reg name
+[   27.735234] msm_camera_config_single_vreg : can't find sub reg nameQCMAP:Enable mobileap done
+[   28.280274] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   28.280274] : msgs(n:2 cur:0 tx) bc(rx:2 tx:1) mode:FIFO slv_addr:0x30 MSTR_STS:0x08132100 OPER:0x00000010
+[   28.400082] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   28.405939] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   28.480273] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   28.485877] msm_sensor_match_id: hi259: read id failed
+[   28.491095] msm_sensor_check_id:1401 match id failed rc -110
+[   28.510380] msm_camera_config_single_vreg : can't find sub reg name
+[   28.545277] msm_camera_config_single_vreg : can't find sub reg name<3>[   29.090267] i2c-msm-v2 78b7000.i2c: TIMEOUT_ERROR(val:510msec) misconfigured GPIO or slave pulling bus line(s) low
+[   29.090267] : msgs(n:2 cur:0 tx) bc(rx:2 tx:1) mode:FIFO slv_addr:0x30 MSTR_STS:0x08132100 OPER:0x00000010
+[   29.210157] i2c-msm-v2 78b7000.i2c: bus lines held low by a slave detected
+[   29.216011] i2c-msm-v2 78b7000.i2c: Executing bus recovery procedure (9 clk pulse)
+[   29.297960] i2c-msm-v2 78b7000.i2c: Bus recovery fail after 10 retries
+[   29.303610] msm_sensor_match_id: hi259: read id failed
+[   29.308576] msm_sensor_check_id:1401 match id failed rc -110
+[   29.329026] msm_camera_config_single_vreg : can't find sub reg name
+[   29.360355] hi259 power up failed<3>[   29.362644] MSM-SENSOR-INIT msm_sensor_driver_cmd:82 msm_sensor_driver_cmd failed (non-fatal) rc -110
+[   29.906907] wcnss: cal data collection completed
+[   31.010984] WIFI MAC:04:86:80:59:52:70
+[   31.124430] wlan: WCNSS WLAN version 1.5.1.2
+[   31.127684] wlan: WCNSS software version 00147
+[   31.132226] wlan: WCNSS hardware version WCN v2.0 RadioPhy vIris_TSMC_4.0 with 48MHz XO
+[   31.140258] DefaultCountry is 00
+[   31.173765] wlan_logging_sock_activate_svc: Initalizing FEConsoleLog = 1 NumBuff = 32
+[   31.181734] wlan_logging_sock_activate_svc: Initalizing Pkt stats pkt_stats_buff = 16
+[   31.190999] wlan: driver loaded
+[   31.194263] Starting wpa supplicant and dhcp client
+[   31.199435] send_filled_buffers_to_user: Send Failed -3 drop_count = 0
+[   31.324804] IPv6: ADDRCONF(NETDEV_UP): wlan0: link is not ready
+[   31.647104] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=93,chip->prev_voltage_based_soc=3
+[   31.655989] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=4
+[   36.673139] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=80,chip->prev_voltage_based_soc=4
+[   36.681750] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=5
+[   38.678191] send_filled_buffers_to_user: 1 callbacks suppressed
+[   38.683286] send_filled_buffers_to_user: Send Failed -3 drop_count = 2
+[   38.804688] cfg80211: Calling CRDA for country: US
+[   38.808841] cfg80211: Regulatory domain changed to country: US
+[   38.813042] hostapd (3428) used greatest stack depth: 4776 bytes left
+[   38.820857] cfg80211:  DFS Master region: FCC
+[   38.824865] cfg80211:   (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp), (dfs_cac_time)
+[   38.834690] cfg80211:   (2402000 KHz - 2472000 KHz @ 40000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.842659] cfg80211:   (5170000 KHz - 5250000 KHz @ 80000 KHz, 160000 KHz AUTO), (N/A, 3000 mBm), (N/A)
+[   38.852124] cfg80211:   (5250000 KHz - 5330000 KHz @ 80000 KHz, 160000 KHz AUTO), (N/A, 2400 mBm), (0 s)
+[   38.861571] cfg80211:   (5490000 KHz - 5730000 KHz @ 160000 KHz), (N/A, 2400 mBm), (0 s)
+[   38.869571] cfg80211:   (5735000 KHz - 5835000 KHz @ 80000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.877654] cfg80211:   (5842000 KHz - 5863000 KHz @ 5000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.885653] cfg80211:   (5850000 KHz - 5870000 KHz @ 10000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.893581] cfg80211:   (5860000 KHz - 5880000 KHz @ 10000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.901582] cfg80211:   (5865000 KHz - 5885000 KHz @ 20000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.909415] cfg80211:   (5870000 KHz - 5890000 KHz @ 10000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.917517] cfg80211:   (5880000 KHz - 5900000 KHz @ 10000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.925576] cfg80211:   (5890000 KHz - 5910000 KHz @ 10000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.933439] cfg80211:   (5895000 KHz - 5915000 KHz @ 20000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.941505] cfg80211:   (5900000 KHz - 5920000 KHz @ 10000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.949432] cfg80211:   (5910000 KHz - 5930000 KHz @ 10000 KHz), (N/A, 3000 mBm), (N/A)
+[   38.957519] cfg80211:   (57240000 KHz - 63720000 KHz @ 2160000 KHz), (N/A, 4000 mBm), (N/A)
+[   38.968670] [10:19:32.364588] [0000000030C68223] [hosta]  wlan: [E :HDD] __wlan_hdd_cfg80211_scan: Not scanning on device_mode = WLAN_HDD_SOFTAP (1)
+[   39.655941] [10:19:33.051861] [00000000318FDB83] [hosta]  wlan: [E :HDD] wlan_hdd_tdls_disable_offchan_and_teardown_links: 182: Station Adapter Not Found
+[   39.669425] [10:19:33.065348] [000000003193CF06] [hosta]  wlan: [E :SME] sme_SelectCBMode: 12279: 2G cbmode selected=0 bonding mode:HT20
+[   39.681598] [10:19:33.077520] [0000000031975FE8] [hosta]  wlan: [E :SAP] sapGetChannelListForObss:Not able to Get Affected Channel Range for Channel : 6
+[   39.701195] [10:19:33.097115] [00000000319D1D95] [VosMC]  wlan: [E :SME] csrValidateMCCBeaconInterval: 3232:  Persona not supported : 1
+[   39.713074] [10:19:33.108996] [0000000031A098A0] [VosMC]  wlan: [E :PE ] limMlmAddBss: 1804: TRYING TO HIDE SSID 0
+[   39.722900] [10:19:33.118824] [0000000031A379B4] [VosMC]  wlan: [E :PE ] mlm_add_sta: 1685: GF: 0, ChnlWidth: 0, MimoPS: 3, lsigTXOP: 0, dsssCCK: 0, SGI20: 1, SGI401
+[   39.780824] [10:19:33.176743] [0000000031B471AB] [VosMC]  wlan: [E :HDD] wlan(0) 00:00:00:00:00:00 Standalone
+[   39.789828] [10:19:33.185750] [0000000031B71544] [VosMC]  wlan: [E :HDD] AP(6) 04:86:80:59:52:70
+[   39.800473] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[   39.880221] ------------[ cut here ]------------
+[   39.883843] WARNING: CPU: 3 PID: 3473 at /home/test/share/SC20/SC20_Linux_R09_r00320.1/poky/build/tmp-glibc/work-shared/msm8909/kernel-source/net/core/dev.c:3430 netif_rx_internal+0x11c/0x240()
+[   39.901069] Cloned packet from dev bridge0
+[   39.905141] Modules linked in: wlan(O)
+[   39.908824] CPU: 3 PID: 3473 Comm: modprobe Tainted: G           O   3.18.71 #12
+[   39.916218] [<c010ded0>] (unwind_backtrace) from [<c010afc4>] (show_stack+0x10/0x14)
+[   39.923930] [<c010afc4>] (show_stack) from [<c0c50874>] (dump_stack+0x74/0x90)
+[   39.931136] [<c0c50874>] (dump_stack) from [<c011cb58>] (warn_slowpath_common+0x64/0x88)
+[   39.939202] [<c011cb58>] (warn_slowpath_common) from [<c011cba8>] (warn_slowpath_fmt+0x2c/0x3c)
+[   39.947890] [<c011cba8>] (warn_slowpath_fmt) from [<c0a7dd10>] (netif_rx_internal+0x11c/0x240)
+[   39.956482] [<c0a7dd10>] (netif_rx_internal) from [<c0a7e864>] (netif_rx_ni+0xa8/0x150)
+[   39.964466] [<c0a7e864>] (netif_rx_ni) from [<c0a7e9cc>] (dev_loopback_xmit+0xc0/0xcc)
+[   39.972371] [<c0a7e9cc>] (dev_loopback_xmit) from [<c0aea654>] (ip_mc_output+0xdc/0x228)
+[   39.980447] [<c0aea654>] (ip_mc_output) from [<c0b1a898>] (igmp_send_report+0x208/0x210)
+[   39.988511] [<c0b1a898>] (igmp_send_report) from [<c0b1bd74>] (igmp_timer_expire+0xac/0xf8)
+[   39.996844] [<c0b1bd74>] (igmp_timer_expire) from [<c017ae2c>] (call_timer_fn+0xb4/0x240)
+[   40.005008] [<c017ae2c>] (call_timer_fn) from [<c017b8a8>] (run_timer_softirq+0x564/0x590)
+[   40.013254] [<c017b8a8>] (run_timer_softirq) from [<c0120c68>] (__do_softirq+0x20c/0x36c)
+[   40.021412] [<c0120c68>] (__do_softirq) from [<c012108c>] (irq_exit+0x84/0xf4)
+[   40.028611] [<c012108c>] (irq_exit) from [<c016bef4>] (__handle_domain_irq+0x88/0xd0)
+[   40.036429] [<c016bef4>] (__handle_domain_irq) from [<c01006f8>] (gic_handle_irq+0x48/0x7c)
+[   40.044763] [<c01006f8>] (gic_handle_irq) from [<c0c5afd0>] (__irq_usr+0x50/0x80)
+[   40.052220] Exception stack(0xe43a7fb0 to 0xe43a7ff8)
+[   40.057253] 7fa0:                                     00000001 00000000 00000000 8583f3ec
+[   40.065419] 7fc0: b3e9f298 b3ea2ac0 00000000 be824b60 8583fa42 00000000 be824c1c be824bbc
+[   40.073575] 7fe0: 00000015 be824b20 b3e7a534 b3e7a908 80060010 ffffffff
+[   40.080295] ---[ end trace 0a2628425a4f1c13 ]---
+[   41.199387] [10:19:34.595306] [00000000335409B2] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from 94:b5:55:fb:90:20
+[   41.346729] [10:19:34.742651] [00000000337F348D] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from c4:de:e2:e9:5f:b8
+[   41.704844] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=80,chip->prev_voltage_based_soc=5
+[   41.713497] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=6
+[   41.792303] [10:19:35.188226] [000000003401BE9D] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from 94:b5:55:fb:ba:e0
+[   41.937957] [10:19:35.333878] [00000000342C6A79] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from c4:de:e2:e9:5a:9c
+[   41.961575] [10:19:35.357499] [00000000343355FD] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from 94:b5:55:fb:90:30
+[   41.990578] [10:19:35.386501] [00000000343BD52F] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from 94:b5:55:fb:c5:80
+[   42.081732] [10:19:35.477659] [0000000034568A01] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from c4:de:e2:e9:5a:54
+[   42.325074] [10:19:35.720999] [00000000349DD479] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from e8:31:cd:8e:39:c4
+[   43.671652] [10:19:37.067577] [000000003628559D] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from 94:b5:55:fb:90:20
+[   43.817456] [10:19:37.213380] [0000000036530CDD] [VosMC]  wlan: [E :PE ] limProcessAssocReqFrame: 1088: Received Assoc Req  successful from c4:de:e2:e9:5f:b8
+[   43.829941] send_filled_buffers_to_user: 86 callbacks suppressed
+[   43.829948] send_filled_buffers_to_user: Send Failed -3 drop_count = 89
+[   46.734160] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=80,chip->prev_voltage_based_soc=6
+[   46.742992] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=7
+[   49.063018] send_filled_buffers_to_user: 13 callbacks suppressed
+[   49.068025] send_filled_buffers_to_user: Send Failed -3 drop_count = 103
+[   51.764588] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=80,chip->prev_voltage_based_soc=7
+[   51.773211] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=8
+~ # [   66.720386] BMS: voltage_soc_timeout_work: BMS device not opened, using voltage based SOC
+[   66.874200] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=85,chip->prev_voltage_based_soc=10
+[   66.883025] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=11

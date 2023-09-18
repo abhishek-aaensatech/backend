@@ -1,0 +1,137 @@
+[  289.738629] VOS ASSERT in logDebug Line 206
+[  289.742495] ------------[ cut here ]------------
+[  289.749274] WARNING: CPU: 0 PID: 3169 at /home/test/share/SC20/SC20_Linux_R09_r00320.1/poky/build/tmp-glibc/work/msm8909-oe-linux-gnueabi/wlan-opensource/git-r2_quec-smart/qcom-opensource/wlan/prima/CORE/SYS/legacy/src/utils/src/logApi.c:206 logDebug+0xa0/0xc8 [wlan]()
+[  289.772253] Modules linked in: wlan(O)
+[  289.775800] CPU: 0 PID: 3169 Comm: VosMCThread Tainted: G        W  O   3.18.71 #12
+[  289.783466] [<c010ded0>] (unwind_backtrace) from [<c010afc4>] (show_stack+0x10/0x14)
+[  289.791168] [<c010afc4>] (show_stack) from [<c0c50874>] (dump_stack+0x74/0x90)
+[  289.798379] [<c0c50874>] (dump_stack) from [<c011cb58>] (warn_slowpath_common+0x64/0x88)
+[  289.806445] [<c011cb58>] (warn_slowpath_common) from [<c011cc0c>] (warn_slowpath_null+0x18/0x20)
+[  289.817061] [<c011cc0c>] (warn_slowpath_null) from [<bf15fbb4>] (logDebug+0xa0/0xc8 [wlan])
+[  289.827284] [<bf15fbb4>] (logDebug [wlan]) from [<bf07f47c>] (limLog+0x34/0x44 [wlan])
+[  289.836819] [<bf07f47c>] (limLog [wlan]) from [<bf0cbfd4>] (limProcessAddStaRsp+0x3c/0xb4 [wlan])
+[  289.847228] [<bf0cbfd4>] (limProcessAddStaRsp [wlan]) from [<bf0978c4>] (limProcessMessages+0x220c/0x27f0 [wlan])
+[  289.859172] [<bf0978c4>] (limProcessMessages [wlan]) from [<bf0981b0>] (limMessageProcessor+0x270/0x29c [wlan])
+[  289.870823] [<bf0981b0>] (limMessageProcessor [wlan]) from [<bf0781b0>] (peProcessMessages+0x48/0x54 [wlan])
+[  289.882191] [<bf0781b0>] (peProcessMessages [wlan]) from [<bf18432c>] (VosMCThread+0x434/0x604 [wlan])
+[  289.891837] [<bf18432c>] (VosMCThread [wlan]) from [<c0136c30>] (kthread+0xd8/0xe8)
+[  289.898498] [<c0136c30>] (kthread) from [<c01068b8>] (ret_from_fork+0x14/0x3c)
+[  289.906006] ---[ end trace 0a2628425a4f1c14 ]---
+[  289.911419] [12:11:14.329050] [000000014FF4E430] [VosMC]  wlan: [E :HDD] wlan(0) 00:00:00:00:00:00 Standalone
+[  289.964249] hostapd (3429) used greatest stack depth: 2356 bytes left
+[  290.664394] [12:11:15.082070] [0000000150D17D10] [VosMC]  wlan: [E :PE ] limHandleUpdateOlbcCache: 1693:  Session not found
+[  293.596676] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=85,chip->prev_voltage_based_soc=55
+[  293.605390] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=56
+[  298.627691] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=85,chip->prev_voltage_based_soc=56
+[  298.636395] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=57
+[  303.657011] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=85,chip->prev_voltage_based_soc=57
+[  303.665718] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=58
+[  308.686743] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=96,chip->prev_voltage_based_soc=58
+[  308.695448] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=59
+[  313.716097] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=96,chip->prev_voltage_based_soc=59
+[  313.724921] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=60
+[  318.746004] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=96,chip->prev_voltage_based_soc=60
+[  318.754709] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=61
+[  323.775692] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=96,chip->prev_voltage_based_soc=61
+[  323.784399] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=62
+[  328.805351] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=99,chip->prev_voltage_based_soc=62
+[  328.814061] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=63
+[  333.835116] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=99,chip->prev_voltage_based_soc=63
+[  333.843825] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=64
+[  338.864726] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=99,chip->prev_voltage_based_soc=64
+[  338.873429] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=65
+[  343.894360] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=65
+[  343.903159] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=66
+[  348.924194] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=66
+[  348.932982] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=67
+[  353.953758] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=67
+[  353.962552] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=68
+[  358.983712] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=68
+[  358.992500] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=69
+[  364.013076] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=69
+[  364.021903] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=70
+[  369.041919] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=70
+[  369.050787] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=71
+[  374.072642] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=71
+[  374.081435] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=72
+[  379.102052] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=72
+[  379.110841] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=73
+[  384.132055] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=73
+[  384.140846] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=74
+[  389.161756] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=74
+[  389.170543] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=75
+[  394.191176] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=75
+[  394.199969] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=76
+[  399.220777] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=76
+[  399.229567] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=77
+[  404.250453] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=77
+[  404.259245] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=78
+[  409.280531] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=78
+[  409.289323] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=79
+[  414.310022] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=79
+[  414.318817] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=80
+[  419.338359] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=80
+[  419.347134] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=81
+[  424.369164] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=81
+[  424.377952] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=82
+[  429.399448] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=82
+[  429.408240] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=83
+
+>
+>
+>
+>
+>
+>
+>
+>
+> [  434.429276] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=83
+[  434.438196] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=84
+[  439.460578] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=84
+[  439.469351] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=85
+[  444.489128] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=85
+[  444.497924] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=86
+[  449.519098] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=86
+[  449.527888] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=87
+/home/test/share/SC20/SC20_Linux_R09_r00320.1/poky/build/tmp-glibc/work/msm890
+9-oe-linux-gnueabi/wlan-opensource/git-r2_quec-smart/qcom-opensource/wlan/prima/
+CORE/SYS/legacy/src/utils/src/logApi.c[  454.548262] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=87
+[  454.557138] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=88
+[  459.579441] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=88
+[  459.588234] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=89
+[  464.609460] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=89
+[  464.618254] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=90
+[  469.638763] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=90
+[  469.647673] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=91
+[  474.669445] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=91
+[  474.678236] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=92
+[  479.699116] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=92
+[  479.707906] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=93
+[  484.729063] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=93
+[  484.737856] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=94
+[  489.758997] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=94
+[  489.767786] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=95
+[  494.789326] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=95
+[  494.798120] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=96
+[  499.819070] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=96
+[  499.827861] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=97
+[  504.848989] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=97
+[  504.857784] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=98
+[  509.879020] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=98
+[  509.887809] BMS: calculate_soc_from_voltage: update bms_psy-0,chip->prev_voltage_based_soc=99
+[  514.909300] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=99
+[  514.918118] BMS: calculate_soc_from_voltage: update bms_psy-1,chip->prev_voltage_based_soc=100
+[  519.938086] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  524.957510] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  529.977412] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  534.997457] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  540.017720] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  545.037438] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  550.057258] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  555.077511] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  560.097798] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  565.118196] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  570.139139] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  575.159133] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+[  580.179077] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100
+logDebug Line 206[  585.198072] BMS: calculate_soc_from_voltage: quectel--voltage_based_soc=100,chip->prev_voltage_based_soc=100

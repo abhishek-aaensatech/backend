@@ -14,19 +14,18 @@
 #include <termios.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <stdbool.h>
 
 #define MAX_CONNECTION 10
 #define PORT 8080
 
 char *all_possible_ips[MAX_CONNECTION + 1] = {"192.168.5.10", "192.168.5.11", "192.168.5.12", "192.168.5.13", "192.168.5.14", "192.168.5.15", "192.168.5.16", "192.168.5.17", "192.168.5.18", "192.168.5.19", "192.168.5.20"};
 char *connected_optimizers_IPs[MAX_CONNECTION];
-char *connected_optimizers[MAX_CONNECTION]; // = {"192.168.5.10", "192.168.5.11", "192.168.5.12", "192.168.5.13", "192.168.5.14", "192.168.5.15", "192.168.5.16", "192.168.5.17", "192.168.5.18", "192.168.5.19", "192.168.5.20", "192.168.5.21", "192.168.5.22", "192.168.5.23", "192.168.5.24", "192.168.5.25", "192.168.5.26", "192.168.5.27", "192.168.5.28", "192.168.5.29", "192.168.5.30", "192.168.5.31", "192.168.5.32", "192.168.5.33", "192.168.5.34", "192.168.5.35", "192.168.5.36", "192.168.5.37", "192.168.5.38", "192.168.5.39", "192.168.5.40"};
+char *connected_optimizers[MAX_CONNECTION];
+
 char *latest_data[MAX_CONNECTION];
 char *database_data[MAX_CONNECTION];
-char noHttpMethodFound[] = "{\"message\":\"Only POST request allowed\"}";
-char noRouteFound[] = "{\"message\":\"No Route Found\"}";
-char prefix_success[] = "HTTP/1.1 200 OK\nContent-Type: application/json\nContent-Length: ";
-char prefix_notFound[] = "HTTP/1.1 404 OK\nContent-Type: application/json\nContent-Length: ";
+char IP_OptimizerIDs_map[MAX_CONNECTION][20];
 
 char *optimizerID_for_sending_into_getProperperties;
 char *properties_for_saving_in_latest_data;
@@ -250,17 +249,10 @@ void getDateTime()
 }
 
 // Utility function to concate two string
-char *concatenate_strings(const char *str1, const char *str2)
+
+char *findSubstring(char *haystack, char *needle)
 {
-    size_t len1 = strlen(str1);
-    size_t len2 = strlen(str2);
-    char *result = malloc(len1 + len2 + 1);
-    if (result == NULL)
-    {
-        return NULL;
-    }
-    strcpy(result, str1);
-    strcat(result, str2);
+    char *result = strstr(haystack, needle);
     return result;
 }
 
@@ -338,30 +330,46 @@ void send_post_request_for_getProperty(const char *url, const char *data)
     curl_easy_cleanup(curl);
 }
 
-void query_function(char *ip_address)
+void query_function(char *ip_address, int idx)
 {
-    int url_len = 25;
-    char *url = malloc(url_len * sizeof(char));
-    snprintf(url, url_len, "%s%s%s", "http://", ip_address, ":8080");
+    char url[50] = {0};
+    sprintf(url, "%s%s%s%s", "http://", ip_address, ":8080", "/getOptimizerID");
 
     char post_data[] = "{\"Hello\":\"Optimizer\"}";
 
-    char *completeURL = concatenate_strings(url, "/getOptimizerID");
-    send_post_request_for_getOptimizerID(completeURL, post_data);
-    free(completeURL);
+    send_post_request_for_getOptimizerID(url, post_data);
+
     if (optimizerID_for_sending_into_getProperperties != NULL)
     {
-        completeURL = concatenate_strings(url, "/getProperties");
-        send_post_request_for_getProperty(concatenate_strings(url, "/getProperties"), optimizerID_for_sending_into_getProperperties);
-        free(completeURL);
+
+        char *position = optimizerID_for_sending_into_getProperperties;
+
+        if ((position = findSubstring(position, "DeviceID")) != NULL)
+        {
+            char *start = strchr(position, ' ');
+            int len = strlen(start);
+            for (int i = 2; i < len; i++)
+            {
+                if (start[i] == '\"')
+                {
+                    break;
+                }
+                else
+                {
+                    IP_OptimizerIDs_map[idx][i - 2] = start[i];
+                }
+            }
+            // printf("%s", IP_OptimizerIDs_map[idx]);
+        }
+
+        sprintf(url, "%s%s%s%s", "http://", ip_address, ":8080", "/getProperties");
+        send_post_request_for_getProperty(url, optimizerID_for_sending_into_getProperperties);
     }
     if (is_by_pass_mode)
     {
-        completeURL = concatenate_strings(url, "/getStatus");
-        send_post_request_for_getProperty(concatenate_strings(url, "/getStatus"), post_data);
-        free(completeURL);
+        sprintf(url, "%s%s%s%s", "http://", ip_address, ":8080", "/getStatus");
+        send_post_request_for_getProperty(url, post_data);
     }
-    free(url);
 }
 
 void *optimizer_query_function(void *arg)
@@ -385,7 +393,7 @@ void *optimizer_query_function(void *arg)
             }
             if (connected_optimizers[i] != NULL)
             {
-                query_function(connected_optimizers[i]);
+                query_function(connected_optimizers[i], i);
                 if (properties_for_saving_in_latest_data != NULL)
                 {
                     int content_length = strlen(properties_for_saving_in_latest_data) + 1;
@@ -394,7 +402,9 @@ void *optimizer_query_function(void *arg)
                 }
             }
             pthread_mutex_unlock(&mutex);
+            usleep(400);
         }
+
         sleep(3);
     }
     pthread_exit(NULL);
@@ -408,9 +418,9 @@ void send_data_to_server_nodejs_using_system(char *data)
 {
 
     char curlbuffer[7000];
-    // sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://44.202.86.124:5000/sendNewDetailsFromGateway", data);
+    sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://44.202.86.124:5000/sendNewDetailsFromGateway", data);
     // sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://192.168.5.17:4000/data", data);
-    sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://localhost:4000/data", data);
+    // sprintf(curlbuffer, "curl -H 'Content-Type: application/json' -d '%s' -X POST  http://localhost:4000/data", data);
     system(curlbuffer);
 }
 
@@ -440,19 +450,15 @@ void *send_data_to_server_function(void *arg)
     char meterDetails[3000];
     while (1)
     {
-        if (cnt % 3 == 0)
+        setup_communication();
+        if (uart_check == 1)
         {
-            setup_communication();
-            if (uart_check == 1)
-            {
-                phase1Values();
-                usleep(1);
-                phase2Values();
-                usleep(1);
-                phase3Values();
-                close(serial_port);
-            }
-            cnt = 0;
+            phase1Values();
+            usleep(1);
+            phase2Values();
+            usleep(1);
+            phase3Values();
+            close(serial_port);
         }
         getDateTime();
         memset(json, 0, sizeof(json));
@@ -496,7 +502,7 @@ void *send_data_to_server_function(void *arg)
         sprintf(data_to_send, "{%s,%s}", newJson, meterDetails);
 
         send_data_to_server_nodejs_using_system(data_to_send);
-        save_data_to_local_file(data_to_send);
+        // save_data_to_local_file(data_to_send);
         sleep(5);
     }
 }
@@ -508,16 +514,20 @@ void *send_data_to_server_function(void *arg)
 void *update_connected_optimizer_function()
 {
     char command[100];
+    int try_cnt = 0, cur_cnt = 0, prev_cnt = 0;
     while (1)
     {
-        for (int i = 0; i < MAX_CONNECTION; i++)
+        if (!try_cnt)
         {
-            if (connected_optimizers_IPs[i] != NULL)
+            for (int i = 0; i < MAX_CONNECTION; i++)
             {
-                connected_optimizers_IPs[i] = (char *)realloc(connected_optimizers_IPs[i], 0);
+                if (connected_optimizers_IPs[i] != NULL)
+                {
+                    connected_optimizers_IPs[i] = (char *)realloc(connected_optimizers_IPs[i], 0);
+                    prev_cnt++;
+                }
             }
         }
-
         for (int i = 0, j = 0; j < (MAX_CONNECTION) && i < (MAX_CONNECTION + 1); i++)
         {
             memset(command, 0, sizeof(command));
@@ -528,11 +538,13 @@ void *update_connected_optimizer_function()
                 connected_optimizers_IPs[j] = realloc(connected_optimizers_IPs[j], strlen(all_possible_ips[i]) + 1);
                 strcpy(connected_optimizers_IPs[j], all_possible_ips[i]);
                 j++;
+                cur_cnt++;
             }
         }
 
         for (int i = 0; i < MAX_CONNECTION; i++)
         {
+
             if (connected_optimizers[i] != NULL)
             {
                 connected_optimizers[i] = (char *)realloc(connected_optimizers[i], 0);
@@ -551,135 +563,209 @@ void *update_connected_optimizer_function()
                 strcpy(connected_optimizers[i], connected_optimizers_IPs[i]);
             }
         }
-        if (connected_optimizers[0] == NULL)
+        if (prev_cnt && (!cur_cnt) && try_cnt < 4)
         {
-            printf("Try to connect Optimizers\n");
-            sleep(10);
+            system("ifconfig wlan0 down");
+            sleep(1);
+            system("ifconfig wlan0 up");
+            sleep(1);
+            system("/etc/initscripts/ifup-wlan wlan0");
+            sleep(1);
+            system("app/quectel-CM &");
+            try_cnt++;
+            printf("try_cnt = %d\n", try_cnt);
         }
         else
         {
-            sleep(30);
+            for (int i = 0; i < MAX_CONNECTION; i++)
+            {
+                if (connected_optimizers_IPs[i] != NULL)
+                {
+                    connected_optimizers[i] = realloc(connected_optimizers[i], strlen(connected_optimizers_IPs[i]) + 1);
+                    strcpy(connected_optimizers[i], connected_optimizers_IPs[i]);
+                }
+            }
+            try_cnt = 0;
+            prev_cnt = 0;
         }
+        if (prev_cnt != 0 && try_cnt == 4 && cur_cnt == 0)
+        {
+            system("reboot");
+        }
+        cur_cnt = 0;
+        sleep(30);
     }
 }
 
 /**************************************************THREAD-3 RELATED CODE END*********************************************************/
 
-/**************************************************AS SERVER CODE START*********************************************************/
+/**************************************************THREAD-4 RELATED CODE START*********************************************************/
 
-void handle_request(int client_socket, char *prefix, char *json_str)
+size_t write_callback_for_toggle(void *contents, size_t size, size_t nmemb, void *userp)
 {
-    char data_to_send[5000] = {0};
-    int content_length = strlen(json_str);
-    sprintf(data_to_send, "%s%d\n\n%s\n", prefix, content_length, json_str);
-    send(client_socket, data_to_send, strlen(data_to_send), 0);
+    printf("%s\n", (char *)contents);
+    return size * nmemb;
 }
 
-void checking_connections(int server_fd, struct sockaddr_in address)
+void send_post_request_for_toggle(const char *url, const char *data)
 {
-    int new_socket, valread;
-    int cnt = 0;
-    char buffer[5000] = {0};
-    int addrlen = sizeof(address);
+    CURL *curl;
+    CURLcode res;
 
-    while (1)
+    curl = curl_easy_init();
+    if (curl == NULL)
     {
+        fprintf(stderr, "Failed to initialize libcurl\n");
+        return;
+    }
 
-        // Accept a new client connection
-        if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t *)&addrlen)) < 0)
+    curl_easy_setopt(curl, CURLOPT_URL, url);
+    curl_easy_setopt(curl, CURLOPT_POST, 1L);
+    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback_for_toggle);
+    curl_easy_setopt(curl, CURLOPT_TIMEOUT_MS, 2000);
+
+    res = curl_easy_perform(curl);
+    if (res != CURLE_OK)
+    {
+        fprintf(stderr, "Failed to perform P-POST request:%s %s\n", url, curl_easy_strerror(res));
+    }
+
+    curl_easy_cleanup(curl);
+}
+
+void toggle_function(char *ip_address, char *data)
+{
+    char url[50] = {0};
+    sprintf(url, "%s%s%s%s", "http://", ip_address, ":8080", "/setBypass");
+    send_post_request_for_toggle(url, data);
+}
+
+size_t write_callback_for_toggleData(void *contents, size_t size, size_t nmemb, void *userp)
+{
+    char json_to_toggle[5000];
+    strcpy(json_to_toggle, (char *)contents);
+    char Optimizer[MAX_CONNECTION][20] = {0};
+    char Optimizer_flag[MAX_CONNECTION][10] = {0};
+    // char arr[] = "[{\"OptimizerID\":\"tes743875874ting3\",\"Flag\":true},{\"OptimizerID\":\"testing2\",\"Flag\":false}]";
+    // printf("\n%s\n", json_to_toggle);
+
+    char *position = json_to_toggle;
+    int idx = 0;
+    while ((position = findSubstring(position, "OptimizerID")) != NULL)
+    {
+        char *start = strchr(position, ':');
+
+        int len = strlen(start);
+        for (int i = 2; i < len; i++)
         {
-            perror("accept");
-            exit(EXIT_FAILURE);
-        }
-
-        printf("\n\nConnection Established\n");
-
-        // Read the incoming request
-        valread = read(new_socket, buffer, 5000);
-        printf("Request received:\n%s\n", buffer);
-
-        // Check if it's a GET or POST request
-        if (strncmp(buffer, "POST", 4) == 0)
-        {
-            char *path_start = strstr(buffer, "POST /");
-            if (path_start != NULL)
+            if (start[i] == '\"')
             {
-                path_start += strlen("POST /");
-                char *path_end = strstr(path_start, " ");
-                *path_end = '\0'; // Null-terminate the path
-                if (strcmp(path_start, "ChangePasswordOfGateway") == 0)
-                {
-                    handle_request(new_socket,prefix_success,"OK1");
-                }
-                else if (strcmp(path_start, "ChangePasswordOfOptimizer") == 0)
-                {
-                    handle_request(new_socket,prefix_success,"OK2");
-                }
-                else if (strcmp(path_start, "toggleOptimizer") == 0)
-                {
-                    handle_request(new_socket,prefix_success,"OK3");
-
-                }
-                else
-                {
-                    handle_request(new_socket, prefix_notFound, noRouteFound);
-                }
+                break;
+            }
+            else
+            {
+                Optimizer[idx][i - 2] = start[i];
             }
         }
-        else
+
+        printf("%s\n", Optimizer[idx]);
+
+        idx++;
+        position += 5;
+    }
+    position = json_to_toggle;
+    idx = 0;
+    while ((position = findSubstring(position, "Flag")) != NULL)
+    {
+        char *start = strchr(position, ':');
+
+        int len = strlen(start);
+        for (int i = 1; i < len; i++)
         {
-            handle_request(new_socket, prefix_notFound, noHttpMethodFound);
+            if (start[i] == '}')
+            {
+                break;
+            }
+            else
+            {
+                Optimizer_flag[idx][i - 1] = start[i];
+            }
         }
-        // Close the client socket
-        close(new_socket);
-        memset(buffer, 0, sizeof(buffer));
+
+        printf("%s\n", Optimizer_flag[idx]);
+        idx++;
+        position += 3;
     }
 
-    // Close the server socket
-    close(server_fd);
+    for (int i = 0; i < MAX_CONNECTION; i++)
+    {
+        if (Optimizer[i][0] == '\0' || Optimizer_flag[i][0] == '\0')
+        {
+            continue;
+        }
+        for (int j = 0; j < MAX_CONNECTION; j++)
+        {
+            pthread_mutex_lock(&mutex);
+            if (IP_OptimizerIDs_map[j][0] == '\0')
+            {
+                printf("NO Map available");
+            }
+            else if (strcmp(Optimizer[i], IP_OptimizerIDs_map[j]) == 0)
+            {
+                char arr[200];
+                sprintf(arr, "{\"OptimizerID\":\"%s\",\"Flag\":\"%s\"", Optimizer[i], Optimizer_flag[i]);
+                printf("%s\n", arr);
+                toggle_function(connected_optimizers[j], arr);
+                memset(IP_OptimizerIDs_map[j], 0, 1);
+            }
+            pthread_mutex_unlock(&mutex);
+        }
+    }
+    return size * nmemb;
 }
 
-void server_init(void)
+void *check_for_toogle_request()
 {
-    int server_fd, opt = 1;
-    struct sockaddr_in address;
 
-    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
+    char url[] = "http://44.202.86.124:5000/toggleOptimizerIDGateway";
+    char data[40];
+    sprintf(data, "{\"GatewayID\":\"%s\"}", GatewayID);
+    while (1)
     {
-        perror("socket failed\n");
-        exit(EXIT_FAILURE);
+        CURL *curl;
+        CURLcode res;
+
+        curl = curl_easy_init();
+        if (curl == NULL)
+        {
+            fprintf(stderr, "Failed to initialize libcurl\n");
+            return (void *)(-1);
+        }
+
+        curl_easy_setopt(curl, CURLOPT_URL, url);
+        curl_easy_setopt(curl, CURLOPT_POST, 1L);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data);
+
+        struct curl_slist *headers = NULL;
+        headers = curl_slist_append(headers, "Content-Type: application/json");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback_for_toggleData);
+        curl_easy_setopt(curl, CURLOPT_TIMEOUT_MS, 5000);
+
+        res = curl_easy_perform(curl);
+        if (res != CURLE_OK)
+        {
+            fprintf(stderr, "Failed to perform P-POST request:%s %s\n", url, curl_easy_strerror(res));
+        }
+
+        curl_easy_cleanup(curl);
+        sleep(30);
     }
-
-    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
-    {
-        perror("setsockopt\n");
-        exit(EXIT_FAILURE);
-    }
-
-    address.sin_family = AF_INET;
-    address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons(PORT);
-
-    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0)
-    {
-        perror("bind failed\n");
-        exit(EXIT_FAILURE);
-    }
-
-    /***************** Start listening for incoming connections *****************/
-    if (listen(server_fd, 10) < 0)
-    {
-        perror("listen\n");
-        exit(EXIT_FAILURE);
-    }
-    printf("Post binding Done\n");
-
-    printf("Server is running. Waiting for connections...\n");
-
-    checking_connections(server_fd, address);
 }
 
-/**************************************************AS SERVER CODE END*********************************************************/
+/**************************************************THREAD-4 RELATED CODE END*********************************************************/
 
 int main()
 {
@@ -708,22 +794,22 @@ int main()
 
     pthread_mutex_init(&mutex, NULL);
 
-    pthread_t optimizer_query_thread, send_data_to_server_thread, update_connected_optimizer_thread;
+    pthread_t optimizer_query_thread, send_data_to_server_thread, update_connected_optimizer_thread, bypass_optimizers_thread;
     int result;
 
-    // result = pthread_create(&update_connected_optimizer_thread, NULL, update_connected_optimizer_function, NULL);
-    // if (result != 0)
-    // {
-    //     printf("Failed Create UpdateConnectedOptimizer Thread\n");
-    //     return 1;
-    // }
+    result = pthread_create(&update_connected_optimizer_thread, NULL, update_connected_optimizer_function, NULL);
+    if (result != 0)
+    {
+        printf("Failed Create UpdateConnectedOptimizer Thread\n");
+        return 1;
+    }
 
-    // result = pthread_create(&optimizer_query_thread, NULL, optimizer_query_function, NULL);
-    // if (result != 0)
-    // {
-    //     printf("Failed to Create OptimizerQuery Thread\n");
-    //     return 1;
-    // }
+    result = pthread_create(&optimizer_query_thread, NULL, optimizer_query_function, NULL);
+    if (result != 0)
+    {
+        printf("Failed to Create OptimizerQuery Thread\n");
+        return 1;
+    }
 
     result = pthread_create(&send_data_to_server_thread, NULL, send_data_to_server_function, NULL);
     if (result != 0)
@@ -731,31 +817,42 @@ int main()
         printf("Failed Create sendDataToServer Thread\n");
         return 1;
     }
-    // Joining and Wait for the thread to finish
-    // result = pthread_join(update_connected_optimizer_thread, NULL);
-    // if (result != 0)
-    // {
-    //     printf("Failed to UpdateConnectedOptimizer thread\n");
-    //     return 1;
-    // }
 
-    // result = pthread_join(optimizer_query_thread, NULL);
-    // if (result != 0)
-    // {
-    //     printf("Failed to OptimizerQuery thread\n");
-    //     return 1;
-    // }
+    result = pthread_create(&bypass_optimizers_thread, NULL, check_for_toogle_request, NULL);
+    if (result != 0)
+    {
+        printf("Failed Create bypassOptimizers Thread\n");
+        return 1;
+    }
+
+    // Joining and Wait for the thread to finish
+    result = pthread_join(update_connected_optimizer_thread, NULL);
+    if (result != 0)
+    {
+        printf("Failed to join UpdateConnectedOptimizer thread\n");
+        return 1;
+    }
+
+    result = pthread_join(optimizer_query_thread, NULL);
+    if (result != 0)
+    {
+        printf("Failed to join OptimizerQuery thread\n");
+        return 1;
+    }
 
     result = pthread_join(send_data_to_server_thread, NULL);
     if (result != 0)
     {
-        printf("Failed to sendDataToServer thread\n");
+        printf("Failed to join sendDataToServer thread\n");
         return 1;
     }
 
-    server_init();
-
-    // pthread_mutex_destroy(&mutex);
+    result = pthread_join(bypass_optimizers_thread, NULL);
+    if (result != 0)
+    {
+        printf("Failed to join bypassOptimizers thread\n");
+        return 1;
+    }
     return 0;
 }
 // gcc -o sound ./sound.c -pthread -lcurl
